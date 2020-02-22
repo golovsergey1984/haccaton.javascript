@@ -1,0 +1,55 @@
+.box-weather {
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 35px;
+  background-color: rgb(16, 33, 54);
+  box-shadow: 0px 8px 43px 0px rgba(16, 33, 54, 0.59);
+  width: 280px;
+  height: 191px;
+}
+.front-title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0 auto;
+  padding: 10px 0;
+  width: 170px;
+}
+.city-title {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.302);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.average-temp {
+  width: 40%;
+  font-size: 45px;
+  color: rgb(255, 255, 255);
+}
+.min-max-temp {
+  width: 20%;
+  color: rgb(255, 255, 255);
+}
+.weather-icon {
+  margin: 0 auto;
+  padding-top: 30px;
+  
+}
+.min {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.302);
+}
+.max {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.302);
+}
+.box-weather-buttons {
+    width: 280px;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
+}
