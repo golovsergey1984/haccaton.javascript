@@ -1,122 +1,145 @@
 html {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  background: url(https://i.pinimg.com/originals/b7/df/3d/b7df3dab6f1791989624502b7e179430.png);
-  background-position-x: center;
-  background-size: cover;
-  overflow-x: hidden;
-  
+	font-family: 'Roboto', sans-serif;
+	background: url(https://i.pinimg.com/originals/b7/df/3d/b7df3dab6f1791989624502b7e179430.png);
+	background-position-x: center;
+	background-size: cover;
+	overflow-x: hidden;
 }
+
 .wrapper {
-  width: 90%;
-  margin: 0 auto;
-  text-align: center;
-  min-width: 320px;
+	width: 90%;
+	margin: 0 auto;
+	text-align: center;
+	min-width: 320px;
 }
 
-.box_weather, .box_today {
-  margin: 70px auto;
-  color: white;
-   background: rgb(18, 18, 66);
-   opacity: 70%;
-   border-radius: 20px;
-   width: 40%;
-   min-width: 250px;
-   max-width: 400px;
-   padding: 30px;
-   height: 200px;
-   /* display: flex;
+.box_weather,
+.box_today {
+	margin: 70px auto;
+	color: white;
+	background: rgb(18, 18, 66);
+	opacity: 70%;
+	border-radius: 20px;
+	width: 40%;
+	min-width: 250px;
+	max-width: 400px;
+	padding: 30px;
+	height: 200px;
+	/* display: flex;
    align-items: center; */
-  }
-  .box_weather:hover, .box_today:hover{
-    opacity: 90%;
-    transition: opacity .5s;
-  }
+}
 
-input, button {
-  border-radius: 40px;
-  background: white;
-  outline: none;
-  box-shadow: rgba(128, 128, 128, 0.582) 0 0 5px;
-  font-family: 'Montserrat', sans-serif;
-  }
+.box_weather:hover,
+.box_today:hover {
+	opacity: 90%;
+	transition: opacity .5s;
+}
+
+input,
+button {
+	border-radius: 40px;
+	background: white;
+	outline: none;
+	box-shadow: rgba(128, 128, 128, 0.582) 0 0 5px;
+	font-family: 'Montserrat', sans-serif;
+}
+
 .box_weather-buttons {
-  max-width: 550px;
-  width: 60%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-evenly;
+	max-width: 550px;
+	width: 60%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-evenly;
 }
-  input {
-    margin-top: 50px;
-    width: 60%;
-    max-width: 400px;
-    padding: 10px 20px;
-  }
-  button {
-    width: 150px;
-    padding: 5px 10px;
-    text-transform: uppercase;
-    font-weight: 700; 
-    border: 3px solid white;
-  }
-  button:hover {
-    background: transparent;
-    color: white;
-    transition: background .5s;
-  }
-  button::placeholder {
-    font-family: 'Montserrat', cursive;
-  }
+
+input {
+	margin-top: 50px;
+	width: 60%;
+	max-width: 400px;
+	padding: 10px 20px;
+}
+
+button {
+	width: 150px;
+	padding: 5px 10px;
+	text-transform: uppercase;
+	font-weight: 700;
+	border: 3px solid white;
+}
+
+button:hover {
+	background: transparent;
+	color: white;
+	transition: background .5s;
+}
+
+button::placeholder {
+	font-family: 'Montserrat', cursive;
+}
+
 .box_weather {
-  text-align: center;
+	text-align: center;
 }
+
 #city {
-  color: grey;
+	color: grey;
 }
 
-
-#temp-min::before, #temp-max::before {
-  width: 50px;
-height: 10px;
-color: grey;
-}
-#temp-min::before {
-  content: "min";
-}
+#temp-min::before,
 #temp-max::before {
-  content: "max";
+	width: 50px;
+	height: 10px;
+	color: grey;
 }
 
-.box_weather-values{
-  display: flex;
-  justify-content: space-evenly;
+#temp-min::before {
+	content: "min";
 }
 
+#temp-max::before {
+	content: "max";
+}
+
+.box_weather-values {
+	display: flex;
+	justify-content: space-evenly;
+}
 
 
 /* ОРИЕНТИРЫ */
+
 #city::after {
-  content: "City";
-  width: 50px;
-  height: 10px;
-  color: grey;
-  }
+	content: "City";
+	width: 50px;
+	height: 10px;
+	color: grey;
+}
 
+#temp-current::after,
+#temp-min::after,
+#temp-max::after {
+	content: "0*";
+	width: 50px;
+	height: 10px;
+	color: grey;
+}
 
-      #temp-current::after, #temp-min::after, #temp-max::after {
-        content: "0*";
-        width: 50px;
-        height: 10px;
-        color: grey;
-        }
-
-        #month-today::after, #date-today::after{
-          content: "22.02.2020";
-          width: 50px;
-          height: 10px;
-          color: grey;
-          }
+#today-month::after,
+#today-date::after {
+	content: "22.02.2020";
+	width: 50px;
+	height: 10px;
+	color: grey;
+}
+#time-current::after,
+#time-sunrise::after,
+#time-sunset::after {
+	content: "15:30:45";
+	width: 50px;
+	height: 10px;
+	color: grey;
+}
