@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="./styles.css">  -->
+    <link rel="stylesheet" href="./styles.css"> 
     <title>Weather</title>
 </head>
 <body>
@@ -18,22 +18,17 @@
         <div class="container">
 <div class="search"><input type="text" placeholder="Enter the city" name="search-city"></div>
 <div class="box_weather">
-        <div class="field">
-                <span id="city" data-value="city-name"></span>
-              </div>
-        <div class="field">
-                <span id="temp-current" data-value="degrees-current"></span>
-              </div>
-        
-              <div class="field">
-                <span id="temp-min" data-value="degrees-min"></span>
-                <span class="label">min</span>
+ <img src="#" alt="" class="box_weather-icon">
+                <h3 id="city" data-value="city-name"></h3>
+    <div class="box_weather-values">
+                     <span id="temp-current" data-value="degrees-current"></span>
+               
+              <div class="field">                <span id="temp-min" data-value="degrees-min"></span>             
               </div>
         
-              <div class="field">
-                <span id="temp-max" data-value="degrees-max"></span>
-                <span class="label">max</span>
-              </div>
+              <div class="field">                           <span id="temp-max" data-value="degrees-max"></span>
+
+              </div></div>
 
 </div>
 <div class="box_weather-buttons">
@@ -47,7 +42,7 @@
                 <span id="date-today" data-value="today-date"></span>
               </div>
               <div class="field">
-                    <span id="day-today" data-value="today-day"></span>
+                    <span id="month-today" data-value="month-today"></span>
                   </div>
                   <div class="field">
                         <span id="time-current" data-value="time-current"></span>
