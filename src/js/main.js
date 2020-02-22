@@ -31,11 +31,9 @@ function createListWeatherHandler(e) {
 
     fetchCities.fetchImage(searchQuery)
         .then(data => {
-            const imageCity = data[0].largeImageURL
-            console.log('зображення міст:', imageCity)
+            const imageCity = data[2].largeImageURL
             const body = document.querySelector('body');
-            console.log('містo:', body);
-            body.style.cssText = `background-image: url("${imageCity}");   background-position-x: center; background-size: cover;
+            body.style.cssText = `background-image: url("${imageCity}"); background-size: cover;
             `
 
         })
@@ -51,3 +49,5 @@ function createListWeatherHandler(e) {
 
 // const dateSunset = new Date(1582385140);
 // console.log(date);
+
+

@@ -8,5 +8,6 @@ export default {
     fetchImage(query) {
         return fetch(`${baseUrl}?image_type=photo&orientation=horizontal&q=${query}&per_page=12${key}`)
             .then(response => response.json())
+            .then(parseImage => parseImage.hits)
     }
 };
