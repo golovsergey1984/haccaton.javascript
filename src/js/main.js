@@ -30,7 +30,15 @@ function createListWeatherHandler(e) {
         .catch(error => console.log(error))
 
     fetchCities.fetchImage(searchQuery)
-        .then(data => console.log('зображення міст:', data.hits))
+        .then(data => {
+            const imageCity = data[0].largeImageURL
+            console.log('зображення міст:', imageCity)
+            const body = document.querySelector('body');
+            console.log('містo:', body);
+            body.style.cssText = `background-image: url("${imageCity}");   background-position-x: center; background-size: cover;
+            `
+
+        })
 
     fetchWeatherFiveDays.fetchFive(searchQuery)
         .then(data => console.log('погода на 5 днів:', data))
