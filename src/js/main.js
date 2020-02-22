@@ -14,6 +14,18 @@ function createListWeatherHandler(e) {
     fetchWeather.fetchCountries(searchQuery)
         .then(data => {
             console.log('погода зараз:', data)
+            const sun = data.sys.sunrise;
+            console.log(sun)
+            const date = new Date(sun);
+            console.log(date);
+
+            const hours = date.getUTCHours(sun);
+            const min = date.getUTCMinutes(sun);
+            const sunrise = `${hours}:${min}`;
+            console.log(sunrise);
+
+
+
         })
         .catch(error => console.log(error))
 
@@ -23,3 +35,11 @@ function createListWeatherHandler(e) {
     fetchWeatherFiveDays.fetchFive(searchQuery)
         .then(data => console.log('погода на 5 днів:', data))
 }
+
+
+
+// const date = new Date(1582347461);
+// console.log(date);
+
+// const dateSunset = new Date(1582385140);
+// console.log(date);
