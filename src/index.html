@@ -8,43 +8,36 @@
   <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-
-
-
+  <link rel="stylesheet" href="./styles.css">
   <title>Weather</title>
 </head>
 
 <body>
+
   <main>
     <div class="wrapper">
       <section class="section_weather">
         <div class="container">
-          <div class="search js-search">
-            <input type="text" placeholder="Enter the city" name="search-city" />
+          <div class="search">
+            <input type="text" placeholder="Enter the city" name="search-city">
           </div>
-          <ul class="list"></ul>
           <div class="box_weather">
-            <div class="field">
-              <span id="city" data-value="city-name"></span>
-            </div>
-            <div class="field">
+            <img src="#" alt="" class="box_weather-icon">
+            <h3 id="city" data-value="city-name"></h3>
+            <div class="box_weather-values">
               <span id="temp-current" data-value="degrees-current"></span>
+
+              <div class="field"> <span id="temp-min" data-value="degrees-min"></span>
+              </div>
+
+              <div class="field"> <span id="temp-max" data-value="degrees-max"></span>
+
+              </div>
             </div>
 
-            <div class="field">
-              <span id="temp-min" data-value="degrees-min"></span>
-              <span class="label">min</span>
-            </div>
-
-            <div class="field">
-              <span id="temp-max" data-value="degrees-max"></span>
-              <span class="label">max</span>
-            </div>
           </div>
           <div class="box_weather-buttons">
-            <button data-action="show today" class="weather-today">
-              Today
-            </button>
+            <button data-action="show today" class="weather-today">Today</button>
             <button data-action="show week" class="weather-week">Week</button>
           </div>
         </div>
@@ -53,19 +46,19 @@
         <div class="container">
           <div class="box_today">
             <div class="field">
-              <span id="date-today" data-value="today-date"></span>
+              <span id="today-date" data-value="today-date"></span>
             </div>
             <div class="field">
-              <span id="day-today" data-value="today-day"></span>
+              <span id="today-month" data-value="today-month"></span>
             </div>
             <div class="field">
               <span id="time-current" data-value="time-current"></span>
             </div>
             <div class="field">
-              <span id="sunrise" data-value="time-sunrise"></span>
+              <span id="time-sunrise" data-value="time-sunrise"></span>
             </div>
             <div class="field">
-              <span id="sunset" data-value="time-sunset"></span>
+              <span id="time-sunset" data-value="time-sunset"></span>
             </div>
           </div>
         </div>
