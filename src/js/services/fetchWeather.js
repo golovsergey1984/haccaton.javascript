@@ -1,6 +1,5 @@
 'use strict';
 
-
 const baseUrl = 'https://api.openweathermap.org/data/2.5/';
 const key = 'bf7ee983cc3ce675dc38a2920f2d4f17';
 
@@ -10,15 +9,6 @@ export default {
 
     return fetch(
       `${baseUrl}weather?q=${query}&appid=${key}&lang=ru&units=metric`,
-    )
-      .then(response => response.json())
-    //   .then(parsed => {
-
-    //  /*   let weather = parsed.main;
-    //     let city = parsed.name; */
-   
-
-    //     return ( parsed)
-    //   })
+    ).then(response => response.json());
   },
 };

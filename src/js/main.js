@@ -14,17 +14,9 @@ inputDiv.addEventListener('input', createListWeatherHandler);
 
 function createListWeatherHandler(e) {
   const searchQuery = e.target.value;
-  // console.log(searchQuery)
   fetchWeather
     .fetchCountries(searchQuery)
     .then(data => {
-      console.log('погода зараз:', data);
-      console.log('1111111111111:', data.main.temp);
-      console.log('1111111111111:', data.name);
-
-      /*     console.log("111111111111111111111"+weather )
-           console.log('222222222222222222222'+city) */
-
       clearForm();
       buildtopDiv(data);
     })
@@ -44,16 +36,8 @@ function createListWeatherHandler(e) {
 
 function buildtopDiv(data) {
   const markup = topDivTemplate(data);
-  /* console.log('markup:', markup) */
   postItem.insertAdjacentHTML('beforeend', markup);
 }
-
-// const date = new Date(1582347461);
-// console.log(date);
-
-// const dateSunset = new Date(1582385140);
-// console.log(date);
-
 function clearForm() {
   postItem.innerHTML = '';
 }
