@@ -12,9 +12,11 @@ export default {
     )
       .then(response => response.json())
       .then(parsed => {
-        parsed.main;
-        console.log(parsed.main);
-        console.log(parsed.main.feels_like);
+        // console.log('code:', parsed.cod);
+        /* if (parsed.cod === "404") {
+                    alert('Веедите корректное название города, если хотите узнать погоду!')
+                } */
+        return parsed.main;
       });
   },
 };

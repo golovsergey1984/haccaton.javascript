@@ -1,6 +1,6 @@
 'use strict';
 
-const baseUrl = 'https://cors-anywhere.herokuapp.com/https://pixabay.com/api/';
+const baseUrl = 'https://pixabay.com/api/';
 const key = '&key=15216450-d096caa7dd5d740f777344039';
 
 export default {
@@ -11,3 +11,5 @@ export default {
             .then(parseImage => parseImage.hits)
     }
 };
+
+// https://cors-anywhere.herokuapp.com/
