@@ -25,8 +25,7 @@ function createListWeatherHandler(e) {
     .then(data => {
       clearForm();
       buildtopDiv(data);
-      buildBottomDiv(data);
-      /*  wetherToday.CreateTodayNode(data.sys.sunset, data.sys.sunrise); */
+      buildBottomDiv(data);     
     })
     .catch(error => console.log(error));
 

@@ -9,11 +9,11 @@ export default {
     } */
 
     console.log('SunRISE:', sunRise);
-    const sunSetTime =
-      new Date(sunSet).getUTCHours() + ':' + new Date(sunSet).getMinutes();
+    const sunSetTime = 2+
+      new Date(sunSet*1000).getUTCHours() + ':' + new Date(sunSet*1000).getMinutes();
     console.log('Hours of sunset time:', sunSetTime);
-    const sunRiseTime =
-      new Date(sunRise).getUTCHours() + ':' + new Date(sunRise).getMinutes();
+    const sunRiseTime = 2 +
+      new Date(sunRise*1000).getUTCHours() + ':' + new Date(sunRise*1000).getMinutes();
     console.log('Hours of sunRise time:', sunRiseTime);
     const date = new Date();
     const hours = 2 + date.getUTCHours();
@@ -51,7 +51,7 @@ export default {
       day: dayArr[day],
       mounth: monthsArr[mounth],
       sunset: sunSetTime,
-      sunrise: sunRiseTime,
+      sunrise: sunRiseTime,      
     };
     
   },
