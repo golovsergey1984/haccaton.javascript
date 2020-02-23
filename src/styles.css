@@ -179,7 +179,9 @@ height: 50px;
   .box_weather, .box_today {
 	  height :130px;
   }
-  
+  .search {
+	  margin-top: -15px;
+  }
 	.box_today {
 		margin-left: 0;
 	}
