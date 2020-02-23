@@ -36,10 +36,12 @@ function createListWeatherHandler(e) {
             `;
   });
 
-  fetchWeatherFiveDays.fetchFive(searchQuery).then(data => data);
+  fetchWeatherFiveDays.fetchFive(searchQuery).then(data => {
+    console.log('five days:', data)
+  });
 }
 
-function buildtopDiv(data) {
+function buildtopDiv(data, icon) {
   const markup = topDivTemplate(data);
   postItem.insertAdjacentHTML('beforeend', markup);
 }
@@ -54,3 +56,7 @@ function clearForm() {
   postItem.innerHTML = '';
   postItemBottom.innerHTML = '';
 }
+
+
+const date = new Date(1582470000);
+console.log('date', date)
