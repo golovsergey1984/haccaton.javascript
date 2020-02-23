@@ -11,15 +11,15 @@ export default { CreateTodayNode (sunRise,sunSet){
     const sunRiseTime = new Date(sunRise).getUTCHours() +':'+ new Date(sunRise).getMinutes();    
      console.log('Hours of sunRise time:',sunRiseTime);
     const date = new Date();
-    const hours =  date.getUTCHours();
+    const hours =  2 + date.getUTCHours();
     const min = date.getMinutes();
-    const currentTime = hours +":"+ min ;   
+    const currentTime = hours +":"+ min ;      
     const mounthDay = date.getDate();
     const mounth = date.getMonth();
     const day = date.getDay();      
-    const dayArr = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
-    const monthsArr = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", 
-    "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"]    
+    const dayArr = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const monthsArr =["January","February","March","April","May","June","July",
+    "August","September","October","November","December"]    
     const dataToTemp = {
         currentTime,        
         mounthDay,

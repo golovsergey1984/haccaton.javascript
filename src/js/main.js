@@ -2,7 +2,7 @@
 import fetchWeather from './services/fetchWeather.js';
 import fetchCities from './services/fetchCities.js';
 import fetchWeatherFiveDays from './services/fetchWeatherFiveDays.js';
-import input from './input.js'
+import wetherToday from './wetcherToday.js'
 const inputDiv = document.querySelector('.js-search');
 
 inputDiv.addEventListener('input', createListWeatherHandler);
@@ -18,12 +18,11 @@ function createListWeatherHandler(e) {
       console.log(sun);
       const date = new Date(sun);
       console.log(date);
-
       const hours = date.getUTCHours(sun);
       const min = date.getUTCMinutes(sun);
       const sunrise = `${hours}:${min}`;
       console.log(sunrise);
-      input.CreateTodayNode(data.sys.sunrise,data.sys.sunset);
+      wetherToday.CreateTodayNode(data.sys.sunrise,data.sys.sunset);
     })
     .catch(error => console.log(error));
 
@@ -44,3 +43,4 @@ function createListWeatherHandler(e) {
 
 // const dateSunset = new Date(1582385140);
 // console.log(date);
+wetherToday.CreateTodayNode(1111111111,111111111);
