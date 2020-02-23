@@ -8,6 +8,6 @@ export default {
         const requestParams = `${query}`;
         return fetch(`${baseUrl}forecast?q=${query}&appid=${key}&lang=ru&units=metric`)
             .then(response => response.json())
-            .then(parsedList => parsedList.list)
+        // .then(parsedList => parsedList.list)
     }
 }

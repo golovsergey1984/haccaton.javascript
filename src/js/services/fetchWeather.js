@@ -7,14 +7,8 @@ export default {
     fetchCountries(query) {
         const requestParams = `${query}`;
 
-        return fetch(`${baseUrl}weather?q=${query}&appid=${key}&lang=ru&units=metric`)
-            .then(response => response.json())
-            .then(parsed => {
-                console.log('code:', parsed.cod)
-                if (parsed.cod === "404") {
-                    alert('Веедите корректное название города, если хотите узнать погоду!')
-                }
-                return parsed.main
-            })
-    }
-}
+        return fetch(
+            `${baseUrl}weather?q=${query}&appid=${key}&lang=en&units=metric`,
+        ).then(response => response.json());
+    },
+};
