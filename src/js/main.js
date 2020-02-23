@@ -10,6 +10,11 @@ import fetchWeatherFiveDays from './services/fetchWeatherFiveDays.js';
 import wetherToday from './wetcherToday.js';
 import { debounce } from 'lodash';
 
+import PNotify from 'pnotify/dist/es/PNotify.js';
+import PNotifyButtons from 'pnotify/dist/es/PNotifyButtons.js';
+import PNotifyStyleMaterial from 'pnotify/dist/es/PNotifyStyleMaterial.js';
+PNotify.defaults.styling = 'material';
+
 const inputDiv = document.querySelector('.js-search');
 
 const list = document.querySelector('.list');
@@ -26,9 +31,9 @@ function createListWeatherHandler(e) {
       clearForm();
       buildtopDiv(data);
       buildBottomDiv(data);
-      /*  wetherToday.CreateTodayNode(data.sys.sunset, data.sys.sunrise); */
+      pnotifyOk();
     })
-    .catch(error => console.log(error));
+    .catch(error => pnotifyErr());
 
   fetchCities.fetchImage(searchQuery).then(data => {
     const imageCity = data[0].largeImageURL;
@@ -37,9 +42,7 @@ function createListWeatherHandler(e) {
             `;
   });
 
-  fetchWeatherFiveDays.fetchFive(searchQuery).then(data => {
-    console.log('five days:', data)
-  });
+  fetchWeatherFiveDays.fetchFive(searchQuery).then(data => {});
 }
 
 function buildtopDiv(data, icon) {
@@ -48,7 +51,10 @@ function buildtopDiv(data, icon) {
 }
 
 function buildBottomDiv(data) {
-  const andData = wetherToday.CreateTodayData(data.sys.sunrise,data.sys.sunset);
+  const andData = wetherToday.CreateTodayData(
+    data.sys.sunrise,
+    data.sys.sunset,
+  );
   const markup = bottomDivTemplate(andData);
   postItemBottom.insertAdjacentHTML('beforeend', markup);
 }
@@ -58,6 +64,26 @@ function clearForm() {
   postItemBottom.innerHTML = '';
 }
 
+function pnotifyErr() {
+  let notice = PNotify.error({
+    text: 'There is no such city. \n Lets try again',
+    animateSpeed: 'slow',
+    delay: 4000,
+  });
+  notice.on('click', function() {
+    notice.close();
+  });
+}
+
+function pnotifyOk() {
+  let notice = PNotify.success({
+    text: 'Get your weather',
+    animateSpeed: 'slow',
+    delay: 4000,
+  });
+  notice.on('click', function() {
+    notice.close();
+  });
+}
 
 const date = new Date(1582470000);
-console.log('date', date)
