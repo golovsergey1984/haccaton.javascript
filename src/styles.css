@@ -18,7 +18,9 @@ body {
 	margin: 0 auto;
 	text-align: center;
 	min-width: 320px;
+	max-width: 2000px;
 }
+
 
 /* BOXES */
 
@@ -35,22 +37,26 @@ body {
 	padding: 30px;
 	height: 200px;
 	display: flex;
-   align-items: center;
-   justify-content: space-evenly;
-   transition: width 3s, height 3s;
-
+	align-items: center;
+	justify-content: space-evenly;
+	transition: width 3s, height 3s;
 }
+
 .box_weather {
 	flex-direction: column;
 }
+
 .box_today {
 	flex-wrap: wrap;
+	text-align: left;
 }
+
 .box_weather:hover,
 .box_today:hover {
 	opacity: 90%;
 	transition: opacity .5s;
 }
+
 
 /* USABLE */
 
@@ -86,6 +92,7 @@ input::placeholder {
 input:focus {
 	box-shadow: rgba(128, 128, 128, 0.582) 0 0 10px;
 }
+
 button {
 	width: 150px;
 	padding: 5px 10px;
@@ -94,10 +101,12 @@ button {
 	border: 3px solid white;
 	transition: width 3s;
 }
-button.enabled{
+
+button.enabled {
 	background-color: transparent;
 	color: white;
 }
+
 button:hover {
 	background: transparent;
 	color: white;
@@ -127,16 +136,19 @@ button:hover {
 #temp-max::before {
 	content: "max";
 }
+
 #temp-current {
 	width: 100px;
 	font-size: 34px;
 }
+
 .box_weather-values .field {
-width: 40px;
-height: 50px;
+	width: 40px;
+	height: 50px;
+	justify-content: space-around;
 }
 
-.box_weather-values, #today-month, #time-current, #time-sunrise, #time-sunset {
+.box_weather-values {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
@@ -144,44 +156,53 @@ height: 50px;
 
 .box_weather-values {
 	align-items: center;
-	height: 40px; 
+	height: 40px;
 	width: 80%;
 }
+.box_weather-icon {
+	width: auto;
+	height: 80px;
+}
+.box_today .field {
+	width: 45%;
+}
 
-.box_today.field {
-	width: 50%;
-}
-.box_today.field:first-of-type {
-	width: 90%;
-}
-/* .box_today.field {
+.box_today:nth-of-type(2) {
 	text-align: left;
 }
-#today-month, #time-sunrise {
+.box_today .field:nth-of-type(odd)  {
 	text-align: right;
 }
-#time-current, #time-sunset {
-	text-align: left;
-} */
+
+
 
 /* DEVICES */
 
 @media screen and (min-width: 1200px) {
-	.box_weather, .box_weather-buttons {
-		margin: 50px 0 0 auto;
-  }
-  .box_weather-buttons {
-	  width: 460px;
-  }
-  button {
-	  width: 45%;
-  }
-  .box_weather, .box_today {
-	  height :130px;
-  }
-  .search {
-	  margin-top: -15px;
-  }
+	.box_weather,
+	.box_weather-buttons {
+		margin: 20px 0 0 auto;
+	}
+	.box_weather-buttons {
+		width: 460px;
+	}
+	button {
+		width: 45%;
+	}
+	.box_weather,
+	.box_today {
+		height: 130px;
+	}
+	.box_today {
+		margin-bottom: 10px;
+	}
+	.box_weather img {
+		width: auto;
+		height: 50px;
+	}
+	.search {
+		margin-top: -15px;
+	}
 	.box_today {
 		margin-left: 0;
 	}
@@ -189,6 +210,7 @@ height: 50px;
 
 
 /* ОРИЕНТИРЫ */
+
 
 /* #city::after {
 	content: "City";
@@ -222,4 +244,3 @@ height: 50px;
 	height: 10px;
 	color: grey;
 } */
-
