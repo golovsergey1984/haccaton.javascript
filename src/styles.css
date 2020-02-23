@@ -1,3 +1,5 @@
+/* GLOBAL */
+
 html {
 	box-sizing: border-box;
 }
@@ -8,6 +10,7 @@ body {
 	background-position-x: center;
 	background-size: cover;
 	overflow-x: hidden;
+	
 }
 
 .wrapper {
@@ -16,6 +19,8 @@ body {
 	text-align: center;
 	min-width: 320px;
 }
+
+/* BOXES */
 
 .box_weather,
 .box_today {
@@ -29,15 +34,23 @@ body {
 	max-width: 400px;
 	padding: 30px;
 	height: 200px;
-	/* display: flex;
-   align-items: center; */
+	display: flex;
+   align-items: center;
+   justify-content: space-evenly;
 }
-
+.box_weather {
+	flex-direction: column;
+}
+.box_today {
+	flex-wrap: wrap;
+}
 .box_weather:hover,
 .box_today:hover {
 	opacity: 90%;
 	transition: opacity .5s;
 }
+
+/* USABLE */
 
 input,
 button {
@@ -63,6 +76,13 @@ input {
 	padding: 10px 20px;
 }
 
+input::placeholder {
+	font-style: oblique;
+}
+
+input:focus {
+	box-shadow: rgba(128, 128, 128, 0.582) 0 0 10px;
+}
 button {
 	width: 150px;
 	padding: 5px 10px;
@@ -70,20 +90,19 @@ button {
 	font-weight: 700;
 	border: 3px solid white;
 }
-
+button.enabled{
+	background-color: transparent;
+	color: white;
+}
 button:hover {
 	background: transparent;
 	color: white;
 	transition: background .5s;
+	box-shadow: rgba(128, 128, 128, 0.582) 0 0 5px;
 }
 
-button::placeholder {
-	font-family: 'Montserrat', cursive;
-}
 
-.box_weather {
-	text-align: center;
-}
+/* DATA */
 
 #city {
 	color: grey;
@@ -94,6 +113,8 @@ button::placeholder {
 	width: 50px;
 	height: 10px;
 	color: grey;
+	margin-top: -10px;
+	left: -50%;
 }
 
 #temp-min::before {
@@ -104,9 +125,46 @@ button::placeholder {
 	content: "max";
 }
 
-.box_weather-values {
+.box_weather-values, #today-month, #time-current, #time-sunrise, #time-sunset {
 	display: flex;
+	flex-direction: row;
 	justify-content: space-evenly;
+}
+
+.field {
+	width: 50%;
+}
+.field:first-of-type {
+	width: 90%;
+}
+/* .box_today.field {
+	text-align: left;
+}
+#today-month, #time-sunrise {
+	text-align: right;
+}
+#time-current, #time-sunset {
+	text-align: left;
+} */
+
+/* DEVICES */
+
+@media screen and (min-width: 1200px) {
+	.box_weather, .box_weather-buttons {
+		margin-right: 0;
+		transition: margin-right 5s;
+	
+	animation-name: right;
+	animation-duration: 5s;
+  }
+  .box_weather-buttons {
+	  width: 50%;
+  }
+  
+  
+	.box_today {
+		margin-left: 0;
+	}
 }
 
 
@@ -135,11 +193,13 @@ button::placeholder {
 	height: 10px;
 	color: grey;
 }
+
 #time-current::after,
 #time-sunrise::after,
 #time-sunset::after {
-	content: "15:30:45";
+	content: "15:30:65";
 	width: 50px;
 	height: 10px;
 	color: grey;
 }
+
