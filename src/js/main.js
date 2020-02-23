@@ -10,6 +10,10 @@ import fetchWeatherFiveDays from './services/fetchWeatherFiveDays.js';
 import wetherToday from './wetcherToday.js';
 import { debounce } from 'lodash';
 
+import moment from 'moment';
+
+import template from '../templates/fiveDays.hbs'
+console.log('templ', template)
 const inputDiv = document.querySelector('.js-search');
 
 const list = document.querySelector('.list');
@@ -39,16 +43,23 @@ function createListWeatherHandler(e) {
 
   fetchWeatherFiveDays.fetchFive(searchQuery).then(data => {
     console.log('five days:', data)
+
+    const day = data.arrOfFiveDayWeatherObject[0];
+    const minTemp = Math.round(Math.min(...day.map(dayData => dayData.main.temp_min)))
+    const maxTemp = Math.round(Math.max(...day.map(dayData => dayData.main.temp_max)))
+    console.log('minTemp:', minTemp)
+    console.log('maxTemp:', maxTemp)
+
   });
 }
 
-function buildtopDiv(data, icon) {
+function buildtopDiv(data) {
   const markup = topDivTemplate(data);
   postItem.insertAdjacentHTML('beforeend', markup);
 }
 
 function buildBottomDiv(data) {
-  const andData = wetherToday.CreateTodayData(data.sys.sunrise,data.sys.sunset);
+  const andData = wetherToday.CreateTodayData(data.sys.sunrise, data.sys.sunset);
   const markup = bottomDivTemplate(andData);
   postItemBottom.insertAdjacentHTML('beforeend', markup);
 }
@@ -58,6 +69,3 @@ function clearForm() {
   postItemBottom.innerHTML = '';
 }
 
-
-const date = new Date(1582470000);
-console.log('date', date)
