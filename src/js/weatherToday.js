@@ -1,19 +1,14 @@
-import sectionToday from '../templates/sectionToday.hbs';
-
-const sectionParrenNode = document.querySelector('.section_today');
-
 export default {
-  CreateTodayData(sunRise, sunSet) {
-    /*  if (sectionParrenNode !== '') {
-      sectionParrenNode.innerHTML = '';
-    } */
+  createTodayData(sunRise, sunSet) {
+    const sunsetDate = new Date(sunSet);
+    const sunRiseDate = new Date(sunRise);
 
     console.log('SunRISE:', sunRise);
     const sunSetTime =
-      new Date(sunSet).getUTCHours() + ':' + new Date(sunSet).getMinutes();
+      sunsetDate.getUTCHours() + ':' + sunsetDate.getMinutes();
     console.log('Hours of sunset time:', sunSetTime);
     const sunRiseTime =
-      new Date(sunRise).getUTCHours() + ':' + new Date(sunRise).getMinutes();
+      sunRiseDate.getUTCHours() + ':' + sunRiseDate.getMinutes();
     console.log('Hours of sunRise time:', sunRiseTime);
     const date = new Date();
     const hours = 2 + date.getUTCHours();
@@ -53,6 +48,6 @@ export default {
       sunset: sunSetTime,
       sunrise: sunRiseTime,
     };
-    
+
   },
 };
