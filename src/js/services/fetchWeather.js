@@ -9,14 +9,6 @@ export default {
 
     return fetch(
       `${baseUrl}weather?q=${query}&appid=${key}&lang=ru&units=metric`,
-    )
-      .then(response => response.json())
-      .then(parsed => {
-        // console.log('code:', parsed.cod);
-        /* if (parsed.cod === "404") {
-                    alert('Веедите корректное название города, если хотите узнать погоду!')
-                } */
-        return parsed.main;
-      });
+    ).then(response => response.json());
   },
 };
