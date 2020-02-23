@@ -3,7 +3,7 @@ import sectionToday from '../templates/sectionToday.hbs';
 const sectionParrenNode = document.querySelector('.section_today');
 
 export default {
-  CreateTodayNode(sunRise, sunSet) {
+  CreateTodayData(sunRise, sunSet) {
     /*  if (sectionParrenNode !== '') {
       sectionParrenNode.innerHTML = '';
     } */
@@ -45,7 +45,7 @@ export default {
       'November',
       'December',
     ];
-    const dataToTemp = {
+   return  {
       currentTime,
       mounthDay,
       day: dayArr[day],
@@ -53,7 +53,6 @@ export default {
       sunset: sunSetTime,
       sunrise: sunRiseTime,
     };
-
-    sectionParrenNode.insertAdjacentHTML('beforeend', sectionToday(dataToTemp));
+    
   },
 };

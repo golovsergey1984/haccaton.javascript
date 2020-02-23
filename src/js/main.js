@@ -46,7 +46,8 @@ function buildtopDiv(data) {
 }
 
 function buildBottomDiv(data) {
-  const markup = bottomDivTemplate(data);
+  const andData = wetherToday.CreateTodayData(data.sys.sunrise,data.sys.sunset);
+  const markup = bottomDivTemplate(andData);
   postItemBottom.insertAdjacentHTML('beforeend', markup);
 }
 
