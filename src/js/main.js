@@ -39,20 +39,3 @@ function createListWeatherHandler(e) {
 
   fetchWeatherFiveDays.fetchFive(searchQuery).then(data => data);
 }
-
-// const date = new Date(1582392390);
-// console.log('set', date);
-
-// const dateSunset = new Date(1582385140);
-// console.log(date);
-
-// console.log('погода зараз:', data)
-// const sun = data.sys.sunrise;
-// console.log(sun)
-// const date = new Date(sun);
-// console.log(date);
-
-// const hours = date.getUTCHours(sun);
-// const min = date.getUTCMinutes(sun);
-// const sunrise = `${hours}:${min}`;
-// console.log(sunrise);
