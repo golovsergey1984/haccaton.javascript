@@ -9,12 +9,6 @@ export default {
 
     return fetch(
       `${baseUrl}weather?q=${query}&appid=${key}&lang=ru&units=metric`,
-    )
-      .then(response => response.json())
-      .then(parsed => {
-        parsed.main;
-        console.log(parsed.main);
-        console.log(parsed.main.feels_like);
-      });
+    ).then(response => response.json());
   },
 };

@@ -7,9 +7,9 @@ export default { CreateTodayNode (sunRise,sunSet){
     if (sectionParrenNode !== '') {sectionParrenNode.innerHTML = '';}  
     console.log('SunRISE:',sunRise);
     const sunSetTime = new Date(sunSet).getUTCHours() +':'+ new Date(sunSet).getMinutes();    
-     console.log('Hours of sunset time:',sunSetTime);
+    console.log('Hours of sunset time:',sunSetTime);
     const sunRiseTime = new Date(sunRise).getUTCHours() +':'+ new Date(sunRise).getMinutes();    
-     console.log('Hours of sunRise time:',sunRiseTime);
+    console.log('Hours of sunRise time:',sunRiseTime);
     const date = new Date();
     const hours =  2 + date.getUTCHours();
     const min = date.getMinutes();
