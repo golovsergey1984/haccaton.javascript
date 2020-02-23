@@ -2,7 +2,7 @@
 import fetchWeather from './services/fetchWeather.js';
 import fetchCities from './services/fetchCities.js';
 import fetchWeatherFiveDays from './services/fetchWeatherFiveDays.js';
-
+import input from './input.js'
 const inputDiv = document.querySelector('.js-search');
 const list = document.querySelector('.list');
 inputDiv.addEventListener('input', createListWeatherHandler);
@@ -15,17 +15,15 @@ function createListWeatherHandler(e) {
         .then(data => {
             console.log('погода зараз:', data)
             const sun = data.sys.sunrise;
-            console.log(sun)
+            console.log("SUN",sun);
             const date = new Date(sun);
-            console.log(date);
+            console.log('data sun:',date);
 
             const hours = date.getUTCHours(sun);
             const min = date.getUTCMinutes(sun);
             const sunrise = `${hours}:${min}`;
             console.log(sunrise);
-
-
-
+            input.CreateTodayNode(data.sys.sunrise,data.sys.sunset);
         })
         .catch(error => console.log(error))
 
