@@ -73,9 +73,3 @@ button::placeholder {
 	height: 40px;
 }
 
-.sasha_style_field{
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-}
