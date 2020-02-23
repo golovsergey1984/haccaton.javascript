@@ -1,23 +1,17 @@
-import fetchSectionWeather from '../templates/section-weather.hbs';
+import topDivTemplate from '../templates/section-weather.hbs';
+import items from './services/fetchWeather.js'
 
-('use strict');
 
-const baseUrl = 'https://api.openweathermap.org/data/2.5/';
-const key = 'bf7ee983cc3ce675dc38a2920f2d4f17';
-// weather?q=киев&lang=ru&units=metric
 
-export default {
-  fetchTopDiv(query) {
-    const requestParams = `${query}`;
+const postItem = document.querySelector('.box_weather');
 
-    //     return fetch(baseUrl + requestParams)
-    //         .then(response => response.json())
-    // }
 
-    return fetch(
-      `${baseUrl}forecast?q=${query}&appid=${key}&lang=ru&units=metric`,
-    )
-      .then(response => response.json())
-      .then(parsed => parsed.main());
-  },
-};
+function buildtopDiv(items) {
+
+
+let markup = topDivTemplate(items)
+ postItem.insertAdjacentHTML('beforeend', markup);
+
+/*   const markup = items.map(item => topDivTemplate(item).join(''));
+  postItem.insertAdjacentHTML('beforeend',markup); */
+}

@@ -1,18 +1,12 @@
- <div class="box_weather">
-            <div class="field">
-              <span id="city" data-value="city-name">{{}}</span>
-            </div>
-            <div class="field">
-              <span id="temp-current" data-value="degrees-current">{{}}</span>
-            </div>
+<img src="#" alt="" class="box_weather-icon">
+<h3 id="city" data-value="city-name">{{name}}</h3>
+<div class="box_weather-values">
+    <span id="temp-current" data-value="degrees-current">  {{main.temp}}</span>
 
-            <div class="field">
-              <span id="temp-min" data-value="degrees-min">{{}}</span>
-              <span class="label">min</span>
-            </div>
+    <div class="field"> <span id="temp-min" data-value="degrees-min">    {{main.temp_min}}</span>
+    </div>
 
-            <div class="field">
-              <span id="temp-max" data-value="degrees-max">{{}}</span>
-              <span class="label">max</span>
-            </div>
-          </div>
+    <div class="field"> <span id="temp-max" data-value="degrees-max">    {{main.temp_max}}</span>
+
+    </div>
+</div>
