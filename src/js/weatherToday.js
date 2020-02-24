@@ -1,20 +1,17 @@
-import sectionToday from '../templates/sectionToday.hbs';
-
-const sectionParrenNode = document.querySelector('.section_today');
-
 export default {
-  CreateTodayData(sunRise, sunSet) {
-    /*  if (sectionParrenNode !== '') {
-      sectionParrenNode.innerHTML = '';
-    } */
-
-    console.log('SunRISE:', sunRise);
+  createTodayData(sunRise, sunSet) {
     const sunSetTime =
-      new Date(sunSet).getUTCHours() + ':' + new Date(sunSet).getMinutes();
-    console.log('Hours of sunset time:', sunSetTime);
+      2 +
+      new Date(sunSet * 1000).getUTCHours() +
+      ':' +
+      new Date(sunSet * 1000).getMinutes();
+
     const sunRiseTime =
-      new Date(sunRise).getUTCHours() + ':' + new Date(sunRise).getMinutes();
-    console.log('Hours of sunRise time:', sunRiseTime);
+      2 +
+      new Date(sunRise * 1000).getUTCHours() +
+      ':' +
+      new Date(sunRise * 1000).getMinutes();
+
     const date = new Date();
     const hours = 2 + date.getUTCHours();
     const min = date.getMinutes();
@@ -45,7 +42,7 @@ export default {
       'November',
       'December',
     ];
-   return  {
+    return {
       currentTime,
       mounthDay,
       day: dayArr[day],
@@ -53,6 +50,5 @@ export default {
       sunset: sunSetTime,
       sunrise: sunRiseTime,
     };
-    
   },
 };
