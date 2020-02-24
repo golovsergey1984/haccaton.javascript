@@ -1,0 +1,15 @@
+  <div class="five-days-block">
+  {{#each fiveDaysTemplateData}}
+    <div class="five-box">
+        <p class="day">{{ this.day }}</p>
+        <p class="date">{{ this.date }}</p>
+        <p class="month">{{ this.month }}</p>
+        <img src="" alt="rain" />
+        <div class="temp">
+            <p class="min-temp">{{ this.minTemp }}</p>
+            <p class="max-temp">{{ this.maxTemp}}</p>
+        </div>
+        <p>{{this.weatherType}}</p>
+    </div>
+  {{/each}}
+  </div>

@@ -12,6 +12,3 @@ export default {
       .then(parseImage => parseImage.hits);
   },
 };
-
-    
-// https://cors-anywhere.herokuapp.com/
