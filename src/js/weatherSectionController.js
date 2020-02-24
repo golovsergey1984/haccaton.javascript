@@ -21,6 +21,8 @@ function onTodayWeatherButtonClick() {
     console.log('No last city weather saved');
     return;
   }
+  todayWeatherButton.classList.add("enabled")
+  fiveDaysWeatherButton.classList.remove("enabled")
 
   clearWeatherSectionContainer();
 
@@ -36,6 +38,8 @@ function onFiveDaysButtonClick() {
     console.log('No last city weather saved');
     return;
   }
+  fiveDaysWeatherButton.classList.add("enabled")
+  todayWeatherButton.classList.remove("enabled")
 
   clearWeatherSectionContainer();
 
@@ -96,4 +100,3 @@ function getFiveDaysTemplateData(fiveDaysResponse) {
     };
   });
 }
-
