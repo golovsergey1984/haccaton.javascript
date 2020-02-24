@@ -29,6 +29,7 @@ function fetchAndRenderCityByQuery(searchQuery) {
       clearForm();
       renderMainWeatherBlock(data);
       renderTodayWeatherContainer(data);
+      console.log(data);
     })
     .catch(error => console.log(error));
 
