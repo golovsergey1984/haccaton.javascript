@@ -93,10 +93,9 @@ function getFiveDaysTemplateData(fiveDaysResponse) {
     return {
       day: 'Monday',
       date,
-      month: 'January',
       minTemp,
       maxTemp,
-      weatherType: `${main} ${description}`,
+      weatherType: `${description}`,
     };
   });
 }

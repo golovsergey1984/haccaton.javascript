@@ -16,8 +16,8 @@ export default {
     const hours = 2 + date.getUTCHours();
     const min = date.getMinutes();
     const currentTime = hours + ':' + min;
-    const mounthDay = date.getDate();
-    const mounth = date.getMonth();
+    const monthDay = date.getDate();
+    const month = date.getMonth();
     const day = date.getDay();
     const dayArr = [
       'Sunday',
@@ -44,9 +44,9 @@ export default {
     ];
     return {
       currentTime,
-      mounthDay,
+      monthDay,
       day: dayArr[day],
-      mounth: monthsArr[mounth],
+      month: monthsArr[month],
       sunset: sunSetTime,
       sunrise: sunRiseTime,
     };

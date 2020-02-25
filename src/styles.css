@@ -136,6 +136,7 @@ button:hover {
   opacity: 0;
   margin-top: -40px;
   transition: opacity 2s, margin-top 2s;
+  text-transform: capitalize;
 }
 
 .box_weather-values .field {
