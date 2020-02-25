@@ -6,7 +6,9 @@ import { cityWeather } from './services/fetchWeather.js';
 import { fetchFiveDaysWeather } from './services/fetchFiveDaysWeather';
 
 const todayWeatherButton = document.querySelector('[data-action="show today"]');
-const fiveDaysWeatherButton = document.querySelector('[data-action="show week"]');
+const fiveDaysWeatherButton = document.querySelector(
+  '[data-action="show week"]',
+);
 const weatherSectionContainer = document.querySelector('.box_today');
 
 todayWeatherButton.addEventListener('click', onTodayWeatherButtonClick);
@@ -21,8 +23,8 @@ function onTodayWeatherButtonClick() {
     console.log('No last city weather saved');
     return;
   }
-  todayWeatherButton.classList.add("enabled")
-  fiveDaysWeatherButton.classList.remove("enabled")
+  todayWeatherButton.classList.add('enabled');
+  fiveDaysWeatherButton.classList.remove('enabled');
 
   clearWeatherSectionContainer();
 
@@ -38,8 +40,8 @@ function onFiveDaysButtonClick() {
     console.log('No last city weather saved');
     return;
   }
-  fiveDaysWeatherButton.classList.add("enabled")
-  todayWeatherButton.classList.remove("enabled")
+  fiveDaysWeatherButton.classList.add('enabled');
+  todayWeatherButton.classList.remove('enabled');
 
   clearWeatherSectionContainer();
 
@@ -49,7 +51,8 @@ function onFiveDaysButtonClick() {
 }
 
 export function renderTodayWeatherContainer(weather) {
-  const todayData = weatherToday.createTodayData(weather.sys.sunrise,
+  const todayData = weatherToday.createTodayData(
+    weather.sys.sunrise,
     weather.sys.sunset,
   );
   const markup = sectionWeatherTodayTemplate(todayData);
@@ -57,11 +60,11 @@ export function renderTodayWeatherContainer(weather) {
 }
 
 function renderFiveDaysBlock(cityName) {
-
-  fetchFiveDaysWeather(cityName).then( fiveDaysData => {
+  fetchFiveDaysWeather(cityName).then(fiveDaysData => {
+    console.log(fiveDaysData);
     const fiveDaysTemplateData = getFiveDaysTemplateData(fiveDaysData);
-
-    const markup = sectionWeatherFiveDaysTemplate({fiveDaysTemplateData});
+    console.log(fiveDaysTemplateData);
+    const markup = sectionWeatherFiveDaysTemplate({ fiveDaysTemplateData });
     weatherSectionContainer.insertAdjacentHTML('beforeend', markup);
   });
 }
@@ -72,23 +75,33 @@ function getFiveDaysTemplateData(fiveDaysResponse) {
     return [];
   }
 
-  let fiveDaysWeatherData =[];
+  let fiveDaysWeatherData = [];
 
   for (let i = 0; i < 5; i++) {
-    let startDay = moment().add(i, 'days').startOf('day').format('X');
-    let endDay = moment().add(i, 'days').endOf('day').format('X');
-    let dayArr = fiveDaysResponse.list.filter(el => el.dt < endDay && el.dt > startDay);
+    let startDay = moment()
+      .add(i, 'days')
+      .startOf('day')
+      .format('X');
+    let endDay = moment()
+      .add(i, 'days')
+      .endOf('day')
+      .format('X');
+    let dayArr = fiveDaysResponse.list.filter(
+      el => el.dt < endDay && el.dt > startDay,
+    );
     fiveDaysWeatherData.push(dayArr);
   }
 
   return fiveDaysWeatherData.map(day => {
     const minTemp = Math.round(
-      Math.min(...day.map(dayData => dayData.main.temp_min)));
+      Math.min(...day.map(dayData => dayData.main.temp_min)),
+    );
     const maxTemp = Math.round(
-      Math.max(...day.map(dayData => dayData.main.temp_max)));
+      Math.max(...day.map(dayData => dayData.main.temp_max)),
+    );
 
-    const {dt: date} = day[0] || {};
-    const {main, description, icon} = day[0].weather[0];
+    const { dt: date } = day[0] || {};
+    const { main, description, icon } = day[0].weather[0];
 
     return {
       day: 'Monday',
