@@ -28,7 +28,6 @@ export default {
 
 setInterval(() => {
   const timeNode = document.querySelector("#time-current");
-  timeNode.innerText = moment().format('HH:mm');
-  console.dir(timeNode.innerText);  
+  timeNode.innerText = moment().format('HH:mm');  
 }, 1000);
 
