@@ -18,7 +18,10 @@ body {
   min-width: 320px;
   max-width: 2000px;
 }
-
+.sun_img{
+  width: 40px;
+  height: 40px;
+ }
 
 /* BOXES */
 
@@ -79,10 +82,14 @@ button {
 }
 
 input {
-  margin-top: 50px;
-  width: 60%;
-  max-width: 400px;
-  padding: 10px 20px;
+	margin-top: 50px;
+	width: 60%;
+	max-width: 400px;
+	padding: 10px 20px;
+}
+
+input::placeholder {
+	font-style: oblique;
 }
 
 input::placeholder {
@@ -259,8 +266,93 @@ img.box_weather-icon {
   display: flex;
 }
 
-.sun_img{
-	width: 40px;
+.box_weather-values {
+	align-items: center;
 	height: 40px;
+	width: 80%;
+}
+.box_weather-icon {
+	width: auto;
+	height: 80px;
+}
+.box_today .field {
+	width: 45%;
 }
 
+.box_today:nth-of-type(2) {
+	text-align: left;
+}
+.box_today .field:nth-of-type(odd)  {
+	text-align: right;
+}
+
+
+
+/* DEVICES */
+
+@media screen and (min-width: 1200px) {
+	.box_weather,
+	.box_weather-buttons {
+		margin: 20px 0 0 auto;
+	}
+	.box_weather-buttons {
+		width: 460px;
+	}
+	button {
+		width: 45%;
+	}
+	.box_weather,
+	.box_today {
+		height: 130px;
+	}
+	.box_today {
+		margin-bottom: 10px;
+	}
+	.box_weather img {
+		width: auto;
+		height: 50px;
+	}
+	.search {
+		margin-top: -15px;
+	}
+	.box_today {
+		margin-left: 0;
+	}
+}
+
+
+/* ОРИЕНТИРЫ */
+
+
+/* #city::after {
+	content: "City";
+	width: 50px;
+	height: 10px;
+	color: grey;
+}
+
+#temp-current::after,
+#temp-min::after,
+#temp-max::after {
+	content: "0*";
+	width: 50px;
+	height: 10px;
+	color: grey;
+}
+
+#today-month::after,
+#today-date::after {
+	content: "22.02.2020";
+	width: 50px;
+	height: 10px;
+	color: grey;
+}
+
+#time-current::after,
+#time-sunrise::after,
+#time-sunset::after {
+	content: "15:30:65";
+	width: 50px;
+	height: 10px;
+	color: grey;
+} */

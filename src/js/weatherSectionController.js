@@ -52,7 +52,7 @@ export function renderTodayWeatherContainer(weather) {
     weather.sys.sunset,weather.timezone
   );
   const markup = sectionWeatherTodayTemplate(todayData);
-  weatherSectionContainer.insertAdjacentHTML('beforeend', markup);
+  weatherSectionContainer.insertAdjacentHTML('beforeend', markup);  
 }
 
 function renderFiveDaysBlock(cityName) {

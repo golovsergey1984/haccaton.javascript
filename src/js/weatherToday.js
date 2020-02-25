@@ -1,53 +1,34 @@
 import moment from 'moment';
 export default {
-  createTodayData(sunRise, sunSet, timeZone) {
-    console.log(moment().format('LTS'));
-    const sunSetTime =
-      new Date((sunSet + timeZone) * 1000).getUTCHours() +
+  createTodayData(sunRise, sunSet, timeZone) {   
+    const timeShifter = (time, timeZone) => new Date((time + timeZone) * 1000);
+    const sunset =
+      timeShifter(sunSet, timeZone).getUTCHours() +
       ':' +
-      new Date((sunSet + timeZone) * 1000).getMinutes();
-    const sunRiseTime =
-      new Date((sunRise + timeZone) * 1000).getUTCHours() +
+      timeShifter(sunSet, timeZone).getMinutes();
+    const sunrise =
+      timeShifter(sunRise, timeZone).getUTCHours() +
       ':' +
-      new Date((sunRise + timeZone) * 1000).getMinutes();
-    const date = new Date();
-    const hours = 2 + date.getUTCHours();
-    const min = date.getMinutes();
-    const currentTime = hours + ':' + min;
-    const mounthDay = date.getDate();
-    const mounth = date.getMonth();
-    const day = date.getDay();
-
-    const dayArr = [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-    ];
-    const monthsArr = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
+      timeShifter(sunRise, timeZone).getMinutes();
+    const month = moment().format('MMMM');
+    const monthDay = moment().format('Do');
+    const day = moment().format('dddd');
+    const currentTime = moment().format('HH:mm');  
     return {
       currentTime,
-      mounthDay,
-      day: dayArr[day],
-      mounth: monthsArr[mounth],
-      sunset: sunSetTime,
-      sunrise: sunRiseTime,
+      monthDay,
+      day,
+      month,
+      sunset,
+      sunrise,
     };
   },
 };
+
+
+setInterval(() => {
+  const timeNode = document.querySelector("#time-current");
+  timeNode.innerText = moment().format('HH:mm');
+  console.dir(timeNode.innerText);  
+}, 1000);
+
