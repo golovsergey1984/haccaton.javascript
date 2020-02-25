@@ -6,11 +6,11 @@ html {
 
 body {
   font-family: 'Roboto', sans-serif;
-  background: url(https://i.pinimg.com/originals/b7/df/3d/b7df3dab6f1791989624502b7e179430.png);
+  background-repeat: no-repeat;
   background-color: black;
+  background-size: cover;
   background-position-x: center;
   overflow-x: hidden;
-  background-size: auto;
   transition: width 3s, height 3s, padding 3s, margin 5s;
 }
 
@@ -34,7 +34,7 @@ body {
   width: 40%;
   min-width: 250px;
   max-width: 400px;
-  padding: 30px;
+  padding: 25px 30px;
   height: 200px;
   display: flex;
   align-items: center;
@@ -182,31 +182,31 @@ button:hover {
 }
 
 .box_today .field {
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin-bottom: 15px;
+  text-align: center;
 }
 
-.box_today:nth-of-type(2) {
+/* .box_today:nth-of-type(2) {
   text-align: left;
 }
 
 .box_today .field:nth-of-type(odd) {
   text-align: right;
+} */
+
+.box_today .field:last-of-type {
+  align-items: center;
 }
 
-#day-today,
 #date-today {
-  font-size: 24px;
+  font-size: 36px;
 }
 
-#date-today::after {
-  content: ',';
-  color: white;
-}
 
 #time-current::before {
   content: 'Time: ';
@@ -269,6 +269,17 @@ img.box_weather-icon {
   }
   button {
     width: 45%;
+  }
+  #date-today {
+    text-align: left;
+    font-size: 44px;
+    width: 100%;
+  }
+
+
+  .box_today .field:not(:first-of-type) {
+    width: 50%;
+    font-size: 14px;
   }
 }
 
