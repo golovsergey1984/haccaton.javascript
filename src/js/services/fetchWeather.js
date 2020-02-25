@@ -1,6 +1,7 @@
 'use strict';
 
-const baseUrl = 'https://api.openweathermap.org/data/2.5/';
+const baseUrl =
+  'https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/';
 const key = 'bf7ee983cc3ce675dc38a2920f2d4f17';
 
 export let cityWeather = {
@@ -17,9 +18,3 @@ export function fetchWeatherByCity(query) {
       return weather;
     });
 }
-
-
-
-
-
-
