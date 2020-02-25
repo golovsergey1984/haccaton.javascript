@@ -42,7 +42,7 @@ function fetchAndRenderCityByQuery(searchQuery) {
   fetchCities.fetchImage(searchQuery).then(data => {
     const imageCity = data[0].largeImageURL;
     const body = document.querySelector('body');
-    body.style.cssText = `background-image: url("${imageCity}"); background-size: cover;`;
+    body.style.cssText = `background-image: url("${imageCity}");`;
   });
 }
 
