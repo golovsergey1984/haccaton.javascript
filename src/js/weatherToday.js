@@ -1,54 +1,30 @@
+import moment from 'moment';
 export default {
-  createTodayData(sunRise, sunSet) {
-    const sunSetTime =
-      2 +
-      new Date(sunSet * 1000).getUTCHours() +
-      ':' +
-      new Date(sunSet * 1000).getMinutes();
-
-    const sunRiseTime =
-      2 +
-      new Date(sunRise * 1000).getUTCHours() +
-      ':' +
-      new Date(sunRise * 1000).getMinutes();
-
-    const date = new Date();
-    const hours = 2 + date.getUTCHours();
-    const min = date.getMinutes();
-    const currentTime = hours + ':' + min;
-    const monthDay = date.getDate();
-    const month = date.getMonth();
-    const day = date.getDay();
-    const dayArr = [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-    ];
-    const monthsArr = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
+  createTodayData(sunRise, sunSet, timeZone) {
+    const timeShifter = (time, timeZone) =>
+      moment.utc((time + timeZone) * 1000).format('LT');
+    const sunset = timeShifter(sunSet, timeZone);
+    const sunrise = timeShifter(sunRise, timeZone);
+    const month = moment().format('MMM');
+    const monthDay = moment().format('Do');
+    const day = moment().format('dddd');
+    const currentTime = moment().format('LT');
     return {
       currentTime,
       monthDay,
-      day: dayArr[day],
-      month: monthsArr[month],
-      sunset: sunSetTime,
-      sunrise: sunRiseTime,
+      day,
+      month,
+      sunset,
+      sunrise,
     };
   },
 };
+ function SetLiveTime() {
+  setInterval(() => {
+    const timeNode = document.querySelector("#time-current");
+    timeNode.innerText = moment().format('LT');
+  }, 1000);
+}
+
+SetLiveTime();
+

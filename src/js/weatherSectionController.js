@@ -53,10 +53,10 @@ function onFiveDaysButtonClick() {
 export function renderTodayWeatherContainer(weather) {
   const todayData = weatherToday.createTodayData(
     weather.sys.sunrise,
-    weather.sys.sunset,
+    weather.sys.sunset,weather.timezone
   );
   const markup = sectionWeatherTodayTemplate(todayData);
-  weatherSectionContainer.insertAdjacentHTML('beforeend', markup);
+  weatherSectionContainer.insertAdjacentHTML('beforeend', markup);  
 }
 
 function renderFiveDaysBlock(cityName) {

@@ -36,6 +36,7 @@ function fetchAndRenderCityByQuery(searchQuery) {
       renderMainWeatherBlock(data);
       renderTodayWeatherContainer(data);
       pnotifyOk();
+      console.log(data);
     })
     .catch(error => pnotifyErr());
 
