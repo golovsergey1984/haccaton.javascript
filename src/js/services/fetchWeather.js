@@ -17,9 +17,3 @@ export function fetchWeatherByCity(query) {
       return weather;
     });
 }
-
-
-
-
-
-

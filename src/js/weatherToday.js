@@ -1,19 +1,14 @@
 import moment from 'moment';
 export default {
-  createTodayData(sunRise, sunSet, timeZone) {   
-    const timeShifter = (time, timeZone) => new Date((time + timeZone) * 1000);
-    const sunset =
-      timeShifter(sunSet, timeZone).getUTCHours() +
-      ':' +
-      timeShifter(sunSet, timeZone).getMinutes();
-    const sunrise =
-      timeShifter(sunRise, timeZone).getUTCHours() +
-      ':' +
-      timeShifter(sunRise, timeZone).getMinutes();
-    const month = moment().format('MMMM');
+  createTodayData(sunRise, sunSet, timeZone) {
+    const timeShifter = (time, timeZone) =>
+      moment.utc((time + timeZone) * 1000).format('LT');
+    const sunset = timeShifter(sunSet, timeZone);
+    const sunrise = timeShifter(sunRise, timeZone);
+    const month = moment().format('MMM');
     const monthDay = moment().format('Do');
     const day = moment().format('dddd');
-    const currentTime = moment().format('HH:mm');  
+    const currentTime = moment().format('LT');
     return {
       currentTime,
       monthDay,
@@ -24,10 +19,12 @@ export default {
     };
   },
 };
+ function SetLiveTime() {
+  setInterval(() => {
+    const timeNode = document.querySelector("#time-current");
+    timeNode.innerText = moment().format('LT');
+  }, 1000);
+}
 
-
-setInterval(() => {
-  const timeNode = document.querySelector("#time-current");
-  timeNode.innerText = moment().format('HH:mm');  
-}, 1000);
+SetLiveTime();
 

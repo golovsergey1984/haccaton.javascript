@@ -23,6 +23,8 @@ function onTodayWeatherButtonClick() {
     console.log('No last city weather saved');
     return;
   }
+  todayWeatherButton.classList.add('enabled');
+  fiveDaysWeatherButton.classList.remove('enabled');
 
   clearWeatherSectionContainer();
 
@@ -38,6 +40,8 @@ function onFiveDaysButtonClick() {
     console.log('No last city weather saved');
     return;
   }
+  fiveDaysWeatherButton.classList.add('enabled');
+  todayWeatherButton.classList.remove('enabled');
 
   clearWeatherSectionContainer();
 
@@ -57,8 +61,9 @@ export function renderTodayWeatherContainer(weather) {
 
 function renderFiveDaysBlock(cityName) {
   fetchFiveDaysWeather(cityName).then(fiveDaysData => {
+    console.log(fiveDaysData);
     const fiveDaysTemplateData = getFiveDaysTemplateData(fiveDaysData);
-
+    console.log(fiveDaysTemplateData);
     const markup = sectionWeatherFiveDaysTemplate({ fiveDaysTemplateData });
     weatherSectionContainer.insertAdjacentHTML('beforeend', markup);
   });
