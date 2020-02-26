@@ -106,6 +106,7 @@ function getFiveDaysTemplateData(fiveDaysResponse) {
     return {
       day: 'Monday',
       date,
+      icon,
       minTemp,
       maxTemp,
       weatherType: `${description}`,
