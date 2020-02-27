@@ -1,27 +1,46 @@
-// const getCurrentPosition = () => {
+import { fetchAndRenderCityByQuery } from '../js/main.js';
+import { fetchAndRenderCityImage } from '../js/main.js';
 
-//     return new Promise((resolve, reject) => {
-//         navigator.geolocation.getCurrentPosition(
-//             resolve,
-//             reject
-//         );
-//     })
-// }
+//====fetch weather======
+const baseUrl = 'https://api.openweathermap.org/data/2.5/';
+const key = 'bf7ee983cc3ce675dc38a2920f2d4f17';
 
+function fetchWeatherByCityName(lat, lon) {
+    const url = `${baseUrl}weather?lat=${lat}&lon=${lon}&appid=${key}&lang=en&units=metric`;
 
-// getCurrentPosition().then(location => {
-//     console.log(location)
-//     success(location)
-// }).catch(error => console.log(error))
+    return fetch(url)
+        .then(response => response.json())
+}
 
+//===geolocation=====
+const getCurrentPosition = () => {
 
-// function success(position) {
-//     console.log('position', position)
+    return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(
+            resolve,
+            reject
+        );
+    })
+}
+getCurrentPosition().then(location => {
+    success(location)
+}).catch(error => console.log(error))
 
-//     const latitude = position.coords.latitude;
-//     const longitude = position.coords.longitude;
+function success(position) {
 
-//     console.log('latitude', latitude)
-//     console.log('latitude', longitude)
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
 
-// }
+    const latitudeToFixed = latitude.toFixed(2);
+    const longitudeToFixed = longitude.toFixed(2);
+
+    fetchWeatherByCityName(latitudeToFixed, longitudeToFixed)
+        .then(data => {
+            let cityName = data.name;
+            console.log('your city name:', cityName)
+
+            fetchAndRenderCityByQuery(cityName);
+
+            fetchAndRenderCityImage(cityName);
+        })
+}

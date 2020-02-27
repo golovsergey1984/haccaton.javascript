@@ -1,14 +1,14 @@
-  <div class="box_weather-soon">
+<div class="box_weather-soon">
   {{#each fiveDaysTemplateData}}
-    <div class="five-box">
-        <span class="day">{{ this.day }}</span>
-        <span class="date-today" data-value="today-date">{{ this.date }}</span>
-        <img src="" alt="Icon of current weather" class="box_weather-icon"/>
-       
-          <span class="temp-min">  {{ this.minTemp }}</span>
-          <span class="temp-max">  {{ this.maxTemp}}</span>          
-      
-        <p class="five-box_weatherType">{{this.weatherType}}</p>
-    </div>
-  {{/each}}
+  <div class="five-box">
+    <span class="day">{{ this.day }}</span>
+    <span class="date-today" data-value="today-date">{{ this.date }}</span>
+    <img src="" alt="Icon of current weather" class="box_weather-icon" />
+
+    <span class="temp-min"> {{ this.minTemp }}</span>
+    <span class="temp-max"> {{ this.maxTemp}}</span>
+
+    <p class="five-box_weatherType">{{this.weatherType}}</p>
   </div>
+  {{/each}}
+</div>я
