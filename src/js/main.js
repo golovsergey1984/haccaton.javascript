@@ -3,7 +3,7 @@ import sectionWeatherTemplate from '../templates/section-weather.hbs';
 import { renderTodayWeatherContainer } from './weatherSectionController';
 
 import { fetchWeatherByCity } from './services/fetchWeather.js';
-import fetchCities from './services/fetchCities.js';
+import { fetchImage } from './services/fetchCities.js';
 import fetchWeatherFiveDays from './services/fetchFiveDaysWeather.js';
 import { debounce } from 'lodash';
 
@@ -26,12 +26,14 @@ inputDiv.addEventListener(
   }, 1000),
 );
 
-// show default city on app start
-fetchAndRenderCityByQuery('Kyiv');
-
-function fetchAndRenderCityByQuery(searchQuery) {
+export function fetchAndRenderCityByQuery(searchQuery) {
   fetchWeatherByCity(searchQuery)
     .then(data => {
+      if (data.cod === '400') {
+        fetchAndRenderCityImage('знак вопроса');
+        pnotifyErrNotQuery();
+        return;
+      }
       clearForm();
       renderMainWeatherBlock(data);
       renderTodayWeatherContainer(data);
@@ -40,7 +42,15 @@ function fetchAndRenderCityByQuery(searchQuery) {
     })
     .catch(error => pnotifyErr());
 
-  fetchCities.fetchImage(searchQuery).then(data => {
+  fetchAndRenderCityImage(searchQuery);
+}
+
+export function fetchAndRenderCityImage(searchQuery) {
+  fetchImage(searchQuery).then(data => {
+    if (data.length === 0) {
+      fetchAndRenderCityImage('weather');
+    }
+
     const imageCity = data[0].largeImageURL;
     const body = document.querySelector('body');
     body.style.cssText = `background-image: url("${imageCity}");`;
@@ -79,4 +89,13 @@ function pnotifyOk() {
   });
 }
 
-const date = new Date(1582470000);
+function pnotifyErrNotQuery() {
+  let notice = PNotify.notice({
+    text: 'To find out the weather, you must enter a query!',
+    animateSpeed: 'slow',
+    delay: 4000,
+  });
+  notice.on('click', function() {
+    notice.close();
+  });
+}
