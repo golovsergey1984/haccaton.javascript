@@ -19,12 +19,11 @@ export default {
     };
   },
 };
- function SetLiveTime() {
+function SetLiveTime() {
   setInterval(() => {
-    const timeNode = document.querySelector("#time-current");
-    timeNode.innerText = moment().format('LT');
+    const timeNode = document.querySelector('#time-current');
+    /* timeNode.innerText = moment().format('LT'); */
   }, 1000);
 }
 
 SetLiveTime();
-
