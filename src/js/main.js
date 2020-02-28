@@ -40,13 +40,13 @@ export function fetchAndRenderCityByQuery(searchQuery) {
         renderTodayWeatherContainer(data);
         fetchAndRenderCityImage(searchQuery);
         pnotifyOk();
+        SetLiveTime();
       }
     })
     .catch(error => pnotifyErr());
 }
 
 export function fetchAndRenderCityImage(searchQuery) {
-  console.log('Это searchQuery:' + searchQuery);
   if (typeof searchQuery === undefined) {
     searchQuery = 'weather';
   }
@@ -57,11 +57,9 @@ export function fetchAndRenderCityImage(searchQuery) {
       fetchAndRenderCityImage(searchQuery);
     } else {
       const imageCity = data[0].largeImageURL;
-      console.log(data);
-      console.log(imageCity);
+
       const body = document.querySelector('body');
       body.style.cssText = `background-image: url("${imageCity}")`;
-      SetLiveTime();
     }
   });
 }
