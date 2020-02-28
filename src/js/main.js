@@ -60,6 +60,37 @@ export function fetchAndRenderCityImage(searchQuery) {
       console.log('Это searchQuery в дата:' + searchQuery);
       fetchAndRenderCityImage(searchQuery);
     }
+
+    if (data === undefined) {
+      searchQuery = 'weather';
+      console.log('Это searchQuery в дата:' + searchQuery);
+      fetchAndRenderCityImage(searchQuery);
+    }
+
+    if (data === '') {
+      searchQuery = 'weather';
+      console.log('Это searchQuery в дата:' + searchQuery);
+      fetchAndRenderCityImage(searchQuery);
+    }
+
+    if ((data = '')) {
+      searchQuery = 'weather';
+      console.log('Это searchQuery в дата:' + searchQuery);
+      fetchAndRenderCityImage(searchQuery);
+    }
+
+    if ((data = 0)) {
+      searchQuery = 'weather';
+      console.log('Это searchQuery в дата:' + searchQuery);
+      fetchAndRenderCityImage(searchQuery);
+    }
+
+    if (data === 0) {
+      searchQuery = 'weather';
+      console.log('Это searchQuery в дата:' + searchQuery);
+      fetchAndRenderCityImage(searchQuery);
+    }
+
     console.log('Я уже работаю 1н раз');
 
     const imageCity = data[0].largeImageURL;
