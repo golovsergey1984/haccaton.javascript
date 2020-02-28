@@ -49,6 +49,19 @@ export function fetchAndRenderCityByQuery(searchQuery) {
 }
 
 export function fetchAndRenderCityImage(searchQuery) {
+  if ((searchQuery = '')) {
+    searchQuery = 'weather';
+  }
+  fetchImage(searchQuery).then(data => {
+    console.log('Pixabay data: ' + data);
+    console.log('IMG bg: ' + data[0].largeImageURL);
+    const imageCity = data[0].largeImageURL;
+    const body = document.querySelector('body');
+    body.style.cssText = `background-image: url("${imageCity}")`;
+  });
+}
+
+/* export function fetchAndRenderCityImage(searchQuery) {
   fetchImage(searchQuery).then(data => {
     if (data.length === 0) {
       fetchAndRenderCityImage('weather');
@@ -60,7 +73,7 @@ export function fetchAndRenderCityImage(searchQuery) {
       body.style.cssText = `background-image: url("${imageCity}")`;
     }
   });
-}
+} */
 
 function renderMainWeatherBlock(data) {
   const markup = sectionWeatherTemplate(data);
