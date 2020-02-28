@@ -49,7 +49,7 @@ export function fetchAndRenderCityByQuery(searchQuery) {
 
 export function fetchAndRenderCityImage(searchQuery) {
   console.log('Это searchQuery:' + searchQuery);
-  if (typeof searchQuery === undefined || searchQuery === null) {
+  if (typeof searchQuery === undefined) {
     searchQuery = 'weather';
   }
   console.log('Это searchQuery после iff:' + searchQuery);
