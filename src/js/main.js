@@ -50,6 +50,7 @@ export function fetchAndRenderCityImage(searchQuery) {
     if (data.length === 0) {
       fetchAndRenderCityImage('weather');
     }
+    console.log('Pixabay data: ' + data);
     console.log('IMG bg: ' + data[0].largeImageURL);
     const imageCity = data[0].largeImageURL;
     const body = document.querySelector('body');
