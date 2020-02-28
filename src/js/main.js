@@ -47,7 +47,7 @@ export function fetchAndRenderCityByQuery(searchQuery) {
     })
     .catch(error => pnotifyErr());
 
-  /* fetchAndRenderCityImage(searchQuery); */
+  fetchAndRenderCityImage(searchQuery);
 }
 
 export function fetchAndRenderCityImage(searchQuery) {
