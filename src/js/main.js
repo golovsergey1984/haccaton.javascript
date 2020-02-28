@@ -77,19 +77,19 @@ export function fetchAndRenderCityImage(searchQuery) {
       searchQuery = 'weather';
       console.log('4. Это searchQuery в дата:' + searchQuery);
       fetchAndRenderCityImage(searchQuery);
-    }
+    }*/
 
     if ((data = 0)) {
       searchQuery = 'weather';
       console.log('5. Это searchQuery в дата:' + searchQuery);
       fetchAndRenderCityImage(searchQuery);
-    } */
+    }
 
-    if (data === 0) {
+    /*     if (data === 0) {
       searchQuery = 'weather';
       console.log('6. Это searchQuery в дата:' + searchQuery);
       fetchAndRenderCityImage(searchQuery);
-    }
+    } */
 
     console.log('Я уже работаю 1н раз');
 
