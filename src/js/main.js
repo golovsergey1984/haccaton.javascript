@@ -1,6 +1,7 @@
 'use strict';
 import sectionWeatherTemplate from '../templates/section-weather.hbs';
 import { renderTodayWeatherContainer } from './weatherSectionController';
+import { SetLiveTime } from './weatherToday.js';
 
 import { fetchWeatherByCity } from './services/fetchWeather.js';
 import { fetchImage } from './services/fetchCities.js';
@@ -39,12 +40,9 @@ export function fetchAndRenderCityByQuery(searchQuery) {
         renderTodayWeatherContainer(data);
         fetchAndRenderCityImage(searchQuery);
         pnotifyOk();
-        console.log(data);
       }
     })
     .catch(error => pnotifyErr());
-
-  /* fetchAndRenderCityImage(searchQuery); */
 }
 
 export function fetchAndRenderCityImage(searchQuery) {
@@ -52,72 +50,21 @@ export function fetchAndRenderCityImage(searchQuery) {
   if (typeof searchQuery === undefined) {
     searchQuery = 'weather';
   }
-  console.log('Это searchQuery после iff:' + searchQuery);
-  fetchImage(searchQuery).then(data => {
-    console.log('Это запрос по Геолокации :' + data);
-    /* if ((data = undefined)) {
-      searchQuery = 'weather';
-      console.log('1. Это searchQuery в дата:' + searchQuery);
-      fetchAndRenderCityImage(searchQuery);
-    } */
 
-    /*     if (data === undefined) {
-      searchQuery = 'weather';
-      console.log('2. Это searchQuery в дата:' + searchQuery);
-      fetchAndRenderCityImage(searchQuery);
-    } */
-
-    /*  if (data === '') {
-      searchQuery = 'weather';
-      console.log('3. Это searchQuery в дата:' + searchQuery);
-      fetchAndRenderCityImage(searchQuery);
-    }
-
-    if ((data = '')) {
-      searchQuery = 'weather';
-      console.log('4. Это searchQuery в дата:' + searchQuery);
-      fetchAndRenderCityImage(searchQuery);
-    }*/
-    if (typeof data === 'undefined') {
-      searchQuery = 'weather';
-      console.log('4. Это searchQuery в дата:' + searchQuery);
-      fetchAndRenderCityImage(searchQuery);
-    }
-
-    /*     if ((data = 0)) {
-      searchQuery = 'weather';
-      console.log('5. Это searchQuery в дата:' + searchQuery);
-      fetchAndRenderCityImage(searchQuery);
-    } */
-
-    /*     if (data === 0) {
-      searchQuery = 'weather';
-      console.log('6. Это searchQuery в дата:' + searchQuery);
-      fetchAndRenderCityImage(searchQuery);
-    } */
-
-    console.log('Я уже работаю 1н раз');
-
-    const imageCity = data[0].largeImageURL;
-
-    const body = document.querySelector('body');
-    body.style.cssText = `background-image: url("${imageCity}")`;
-  });
-}
-
-/* export function fetchAndRenderCityImage(searchQuery) {
   fetchImage(searchQuery).then(data => {
     if (data.length === 0) {
-      fetchAndRenderCityImage('weather');
+      searchQuery = 'weather';
+      fetchAndRenderCityImage(searchQuery);
     } else {
-      console.log('Pixabay data: ' + data);
-      console.log('IMG bg: ' + data[0].largeImageURL);
       const imageCity = data[0].largeImageURL;
+      console.log(data);
+      console.log(imageCity);
       const body = document.querySelector('body');
       body.style.cssText = `background-image: url("${imageCity}")`;
+      SetLiveTime();
     }
   });
-} */
+}
 
 function renderMainWeatherBlock(data) {
   const markup = sectionWeatherTemplate(data);

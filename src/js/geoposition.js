@@ -35,7 +35,5 @@ function success(position) {
     console.log('your city name:', cityName + ' img url added');
 
     fetchAndRenderCityByQuery(cityName);
-
-    fetchAndRenderCityImage(cityName);
   });
 }
