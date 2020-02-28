@@ -54,40 +54,40 @@ export function fetchAndRenderCityImage(searchQuery) {
   }
   console.log('Это searchQuery после iff:' + searchQuery);
   fetchImage(searchQuery).then(data => {
-    console.log('Это запрос по Геолокации:' + data);
+    console.log('Это запрос по Геолокации :' + data);
     if ((data = undefined)) {
       searchQuery = 'weather';
-      console.log('Это searchQuery в дата:' + searchQuery);
+      console.log('1. Это searchQuery в дата:' + searchQuery);
       fetchAndRenderCityImage(searchQuery);
     }
 
     if (data === undefined) {
       searchQuery = 'weather';
-      console.log('Это searchQuery в дата:' + searchQuery);
+      console.log('2. Это searchQuery в дата:' + searchQuery);
       fetchAndRenderCityImage(searchQuery);
     }
 
     if (data === '') {
       searchQuery = 'weather';
-      console.log('Это searchQuery в дата:' + searchQuery);
+      console.log('3. Это searchQuery в дата:' + searchQuery);
       fetchAndRenderCityImage(searchQuery);
     }
 
     if ((data = '')) {
       searchQuery = 'weather';
-      console.log('Это searchQuery в дата:' + searchQuery);
+      console.log('4. Это searchQuery в дата:' + searchQuery);
       fetchAndRenderCityImage(searchQuery);
     }
 
     if ((data = 0)) {
       searchQuery = 'weather';
-      console.log('Это searchQuery в дата:' + searchQuery);
+      console.log('5. Это searchQuery в дата:' + searchQuery);
       fetchAndRenderCityImage(searchQuery);
     }
 
     if (data === 0) {
       searchQuery = 'weather';
-      console.log('Это searchQuery в дата:' + searchQuery);
+      console.log('6. Это searchQuery в дата:' + searchQuery);
       fetchAndRenderCityImage(searchQuery);
     }
 
