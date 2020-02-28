@@ -36,13 +36,14 @@ export function fetchAndRenderCityByQuery(searchQuery) {
         fetchAndRenderCityImage('знак вопроса');
         pnotifyErrNotQuery();
         return;
+      } else {
+        clearForm();
+        renderMainWeatherBlock(data);
+        renderTodayWeatherContainer(data);
+        fetchAndRenderCityImage(searchQuery);
+        pnotifyOk();
+        console.log(data);
       }
-      clearForm();
-      renderMainWeatherBlock(data);
-      renderTodayWeatherContainer(data);
-      fetchAndRenderCityImage(searchQuery);
-      pnotifyOk();
-      console.log(data);
     })
     .catch(error => pnotifyErr());
 
