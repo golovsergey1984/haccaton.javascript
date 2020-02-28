@@ -77,6 +77,19 @@ function getFiveDaysTemplateData(fiveDaysResponse) {
 
   let fiveDaysWeatherData = [];
 
+  //============================
+  console.log(fiveDaysResponse);
+const date = moment.utc().format();
+console.log(date);
+ const dayArr =[];
+ const dateArr = [];
+ for (let i = 0; i < 5; i++) {
+  dayArr.push(moment(date).add(i, 'days').format('dddd'));
+  dateArr.push(moment(date).add(i, 'days').format('Do'));
+ }
+ console.log(dayArr);
+ console.log(dateArr);
+//===============================
   for (let i = 0; i < 5; i++) {
     let startDay = moment()
       .add(i, 'days')
