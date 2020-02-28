@@ -21,8 +21,11 @@ inputDiv.addEventListener(
   'input',
   debounce(event => {
     const searchQuery = event.target.value;
-
-    fetchAndRenderCityByQuery(searchQuery);
+    if ((searchQuery = '')) {
+      return;
+    } else {
+      fetchAndRenderCityByQuery(searchQuery);
+    }
   }, 1000),
 );
 
