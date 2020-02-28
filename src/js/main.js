@@ -48,6 +48,7 @@ export function fetchAndRenderCityByQuery(searchQuery) {
 }
 
 export function fetchAndRenderCityImage(searchQuery) {
+  console.log('Это searchQuery:' + searchQuery);
   if ((searchQuery = '')) {
     searchQuery = 'weather';
   }
