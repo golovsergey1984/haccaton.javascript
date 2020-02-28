@@ -32,7 +32,10 @@ function success(position) {
 
   fetchWeatherByCityName(latitudeToFixed, longitudeToFixed).then(data => {
     let cityName = data.name;
-    console.log('your city name:', cityName + ' img url delete + inner');
+    console.log(
+      'your city name:',
+      cityName + ' img url delete + inner + opacity changed',
+    );
 
     fetchAndRenderCityByQuery(cityName);
 
