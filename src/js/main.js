@@ -55,11 +55,11 @@ export function fetchAndRenderCityImage(searchQuery) {
   console.log('Это searchQuery после iff:' + searchQuery);
   fetchImage(searchQuery).then(data => {
     console.log('Это запрос по Геолокации :' + data);
-    if ((data = undefined)) {
+    /* if ((data = undefined)) {
       searchQuery = 'weather';
       console.log('1. Это searchQuery в дата:' + searchQuery);
       fetchAndRenderCityImage(searchQuery);
-    }
+    } */
 
     if (data === undefined) {
       searchQuery = 'weather';
@@ -67,7 +67,7 @@ export function fetchAndRenderCityImage(searchQuery) {
       fetchAndRenderCityImage(searchQuery);
     }
 
-    if (data === '') {
+    /*  if (data === '') {
       searchQuery = 'weather';
       console.log('3. Это searchQuery в дата:' + searchQuery);
       fetchAndRenderCityImage(searchQuery);
@@ -89,7 +89,7 @@ export function fetchAndRenderCityImage(searchQuery) {
       searchQuery = 'weather';
       console.log('6. Это searchQuery в дата:' + searchQuery);
       fetchAndRenderCityImage(searchQuery);
-    }
+    } */
 
     console.log('Я уже работаю 1н раз');
 
