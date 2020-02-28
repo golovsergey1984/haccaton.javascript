@@ -22,9 +22,9 @@ export default {
 function SetLiveTime() {
   setInterval(() => {
     const timeNode = document.querySelector('#time-current');
-    console.log('moment' + moment().format('LT'));
-    console.log('current time' + currentTime);
-    /* timeNode.innerText = moment().format('LT'); */
+    /* console.log('moment' + moment().format('LT')); */
+
+    timeNode.innerText = moment().format('LT');
   }, 1000);
 }
 
