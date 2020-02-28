@@ -54,6 +54,9 @@ export function fetchAndRenderCityImage(searchQuery) {
   }
   console.log('Это searchQuery после iff:' + searchQuery);
   fetchImage(searchQuery).then(data => {
+    if ((data = '')) {
+      fetchAndRenderCityImage('weather');
+    }
     console.log('Я уже работаю 1н раз');
     console.log('Это запрос по Геолокации:' + data);
     const imageCity = data[0].largeImageURL;
