@@ -49,10 +49,10 @@ export function fetchAndRenderCityByQuery(searchQuery) {
 
 export function fetchAndRenderCityImage(searchQuery) {
   console.log('Это searchQuery:' + searchQuery);
-  if ((searchQuery = '')) {
+  if (searchQuery === '') {
     searchQuery = 'weather';
   }
-  console.log('Это searchQuery после if:' + searchQuery);
+  console.log('Это searchQuery после iff:' + searchQuery);
   fetchImage(searchQuery).then(data => {
     console.log('Я уже работаю 1н раз');
 
