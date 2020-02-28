@@ -40,12 +40,13 @@ export function fetchAndRenderCityByQuery(searchQuery) {
       clearForm();
       renderMainWeatherBlock(data);
       renderTodayWeatherContainer(data);
+      fetchAndRenderCityImage(searchQuery);
       pnotifyOk();
       console.log(data);
     })
     .catch(error => pnotifyErr());
 
-  fetchAndRenderCityImage(searchQuery);
+  /* fetchAndRenderCityImage(searchQuery); */
 }
 
 export function fetchAndRenderCityImage(searchQuery) {
@@ -53,8 +54,8 @@ export function fetchAndRenderCityImage(searchQuery) {
     searchQuery = 'weather';
   }
   fetchImage(searchQuery).then(data => {
-    console.log('Pixabay data: ' + data);
-    console.log('IMG bg: ' + data[0].largeImageURL);
+    console.log('Я уже работаю 1н раз');
+
     const imageCity = data[0].largeImageURL;
     const body = document.querySelector('body');
     body.style.cssText = `background-image: url("${imageCity}")`;
