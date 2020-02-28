@@ -29,7 +29,7 @@ body {
   margin: 70px auto;
   color: white;
   background: rgb(18, 18, 66);
-  /* opacity: 70%; */
+  opacity: 0.7;
   border-radius: 20px;
   width: 40%;
   min-width: 250px;
@@ -68,7 +68,7 @@ body {
 
 .box_weather:hover,
 .box_today:hover {
-  opacity: 90%;
+  opacity: 0.9;
   transition: opacity 0.5s;
 }
 
