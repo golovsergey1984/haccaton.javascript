@@ -54,8 +54,9 @@ export function fetchAndRenderCityImage(searchQuery) {
   }
   console.log('Это searchQuery после iff:' + searchQuery);
   fetchImage(searchQuery).then(data => {
-    if ((data = '')) {
+    if (data === undefined) {
       searchQuery = 'weather';
+      console.log('Это searchQuery в дата:' + searchQuery);
       fetchAndRenderCityImage(searchQuery);
     }
     console.log('Я уже работаю 1н раз');
