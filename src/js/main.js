@@ -21,11 +21,8 @@ inputDiv.addEventListener(
   'input',
   debounce(event => {
     const searchQuery = event.target.value;
-    if ((searchQuery = '')) {
-      return;
-    } else {
-      fetchAndRenderCityByQuery(searchQuery);
-    }
+
+    fetchAndRenderCityByQuery(searchQuery);
   }, 1000),
 );
 
@@ -47,7 +44,7 @@ export function fetchAndRenderCityByQuery(searchQuery) {
     })
     .catch(error => pnotifyErr());
 
-  fetchAndRenderCityImage(searchQuery);
+  /* fetchAndRenderCityImage(searchQuery); */
 }
 
 export function fetchAndRenderCityImage(searchQuery) {
