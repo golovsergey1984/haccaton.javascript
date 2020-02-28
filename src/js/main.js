@@ -50,7 +50,7 @@ export function fetchAndRenderCityImage(searchQuery) {
     if (data.length === 0) {
       fetchAndRenderCityImage('weather');
     }
-    console.log(data[0].largeImageURL);
+    console.log('IMG bg: ' + data[0].largeImageURL);
     const imageCity = data[0].largeImageURL;
     const body = document.querySelector('body');
     body.style.cssText = `background-image: url("${imageCity}")`;
