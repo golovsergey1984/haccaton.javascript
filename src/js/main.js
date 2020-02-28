@@ -49,14 +49,15 @@ export function fetchAndRenderCityByQuery(searchQuery) {
 
 export function fetchAndRenderCityImage(searchQuery) {
   console.log('Это searchQuery:' + searchQuery);
-  if (searchQuery === '') {
+  if (searchQuery === '' || undefined) {
     searchQuery = 'weather';
   }
   console.log('Это searchQuery после iff:' + searchQuery);
   fetchImage(searchQuery).then(data => {
     console.log('Я уже работаю 1н раз');
-
+    console.log('Это запрос по Геолокации:' + data);
     const imageCity = data[0].largeImageURL;
+
     const body = document.querySelector('body');
     body.style.cssText = `background-image: url("${imageCity}")`;
   });
