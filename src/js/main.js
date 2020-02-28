@@ -52,12 +52,13 @@ export function fetchAndRenderCityImage(searchQuery) {
   fetchImage(searchQuery).then(data => {
     if (data.length === 0) {
       fetchAndRenderCityImage('weather');
+    } else {
+      console.log('Pixabay data: ' + data);
+      console.log('IMG bg: ' + data[0].largeImageURL);
+      const imageCity = data[0].largeImageURL;
+      const body = document.querySelector('body');
+      body.style.cssText = `background-image: url("${imageCity}")`;
     }
-    console.log('Pixabay data: ' + data);
-    console.log('IMG bg: ' + data[0].largeImageURL);
-    const imageCity = data[0].largeImageURL;
-    const body = document.querySelector('body');
-    body.style.cssText = `background-image: url("${imageCity}")`;
   });
 }
 
