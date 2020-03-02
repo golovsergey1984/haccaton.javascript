@@ -1,9 +1,11 @@
 'use strict';
 import sectionWeatherTemplate from '../templates/section-weather.hbs';
 import { renderTodayWeatherContainer } from './weatherSectionController';
+import { SetLiveTime } from './weatherToday.js';
+import {InputHistory} from './weatherToday.js';
 
 import { fetchWeatherByCity } from './services/fetchWeather.js';
-import fetchCities from './services/fetchCities.js';
+import { fetchImage } from './services/fetchCities.js';
 import fetchWeatherFiveDays from './services/fetchFiveDaysWeather.js';
 import { debounce } from 'lodash';
 
@@ -26,24 +28,44 @@ inputDiv.addEventListener(
   }, 1000),
 );
 
-// show default city on app start
-fetchAndRenderCityByQuery('Kyiv');
-
-function fetchAndRenderCityByQuery(searchQuery) {
+export function fetchAndRenderCityByQuery(searchQuery) {
   fetchWeatherByCity(searchQuery)
     .then(data => {
-      clearForm();
-      renderMainWeatherBlock(data);
-      renderTodayWeatherContainer(data);
-      pnotifyOk();
-      console.log(data);
+      if (data.cod === '400') {
+        fetchAndRenderCityImage('знак вопроса');
+        pnotifyErrNotQuery();
+        return;
+      } else {
+        clearForm();
+        renderMainWeatherBlock(data);
+        renderTodayWeatherContainer(data);
+        fetchAndRenderCityImage(searchQuery);
+        pnotifyOk();
+        SetLiveTime();
+        console.log(data);
+        const historyList = new InputHistory();
+        historyList.addCity(data.name);
+        console.log(historyList.readHistory());
+      }
     })
     .catch(error => pnotifyErr());
+}
 
-  fetchCities.fetchImage(searchQuery).then(data => {
-    const imageCity = data[0].largeImageURL;
-    const body = document.querySelector('body');
-    body.style.cssText = `background-image: url("${imageCity}");`;
+export function fetchAndRenderCityImage(searchQuery) {
+  if (typeof searchQuery === undefined) {
+    searchQuery = 'weather';
+  }
+
+  fetchImage(searchQuery).then(data => {
+    if (data.length === 0) {
+      searchQuery = 'weather';
+      fetchAndRenderCityImage(searchQuery);
+    } else {
+      const imageCity = data[0].largeImageURL;
+
+      const body = document.querySelector('body');
+      body.style.cssText = `background-image: url("${imageCity}")`;
+    }
   });
 }
 
@@ -79,4 +101,13 @@ function pnotifyOk() {
   });
 }
 
-const date = new Date(1582470000);
+function pnotifyErrNotQuery() {
+  let notice = PNotify.notice({
+    text: 'To find out the weather, you must enter a query!',
+    animateSpeed: 'slow',
+    delay: 4000,
+  });
+  notice.on('click', function() {
+    notice.close();
+  });
+}

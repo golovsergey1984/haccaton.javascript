@@ -1,4 +1,5 @@
 import moment from 'moment';
+import historyListTemplate from '../templates/historyList.hbs';
 export default {
   createTodayData(sunRise, sunSet, timeZone) {
     const timeShifter = (time, timeZone) =>
@@ -19,15 +20,52 @@ export default {
     };
   },
 };
-function SetLiveTime() {
+
+export function SetLiveTime() {
   setInterval(() => {
     try {
       const timeNode = document.querySelector('#time-current');
-      timeNode.innerText = moment().format('LT');      
+      if (timeNode !== null){ // test to existing of node
+        timeNode.innerText = moment().format('LT');      
+      }
+      
     } catch (err) {
       console.log('func SetLiveTime',err);
     }
   }, 1000);
 }
 
-SetLiveTime();
+
+const inputNode = document.querySelector('.js-search');
+console.log(inputNode);
+ export class   InputHistory {
+    constructor(cityName, parrentNode,inputNode){
+        this.cityName = cityName;
+        this.parrentNode = parrentNode;
+        this.input = '';
+        this.cityArr = [];
+        this.inputNode = inputNode;
+        this.createHistoryList();
+    }
+    dataTransfer(flag){
+        
+     }    
+   
+   addCity(city){       
+        this.cityArr.shift(city);
+        this.cityArr.length = 2;       
+        console.log(this.cityArr);
+        localStorage.setItem('history',JSON.stringify(this.cityArr));
+
+   }
+    readHistory (){
+        return JSON.parse (localStorage.getItem('history'));
+    }
+    createHistoryList (){          
+       const markup = historyListTemplate({name: this.cityArr});
+       this.parrentNode.insertAdjacentHTML('beforeend', markup);
+    } 
+}
+
+// const list = new InputHistory(inputNode,inputNode);
+// list.createHistoryList();
