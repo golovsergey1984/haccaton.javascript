@@ -18,6 +18,7 @@ const inputDiv = document.querySelector('.js-search');
 
 const mainWeatherBlock = document.querySelector('.box_weather');
 const weatherSectionContainer = document.querySelector('.box_today');
+const historyList = new InputHistory(1,inputDiv,1);
 
 inputDiv.addEventListener(
   'input',
@@ -27,6 +28,11 @@ inputDiv.addEventListener(
     fetchAndRenderCityByQuery(searchQuery);
   }, 1000),
 );
+
+inputDiv.addEventListener('click',({target})=> {
+  historyList.clickControler(target.innerText);
+  console.dir(target);
+});
 
 export function fetchAndRenderCityByQuery(searchQuery) {
   fetchWeatherByCity(searchQuery)
@@ -42,10 +48,9 @@ export function fetchAndRenderCityByQuery(searchQuery) {
         fetchAndRenderCityImage(searchQuery);
         pnotifyOk();
         SetLiveTime();
-        console.log(data);
-        const historyList = new InputHistory();
+        console.log(data);        
         historyList.addCity(data.name);
-        console.log(historyList.readHistory());
+        historyList.createHistoryList();        
       }
     })
     .catch(error => pnotifyErr());
@@ -62,7 +67,6 @@ export function fetchAndRenderCityImage(searchQuery) {
       fetchAndRenderCityImage(searchQuery);
     } else {
       const imageCity = data[0].largeImageURL;
-
       const body = document.querySelector('body');
       body.style.cssText = `background-image: url("${imageCity}")`;
     }
