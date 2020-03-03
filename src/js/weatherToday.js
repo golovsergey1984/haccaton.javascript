@@ -35,34 +35,28 @@ export function SetLiveTime() {
   }, 1000);
 }
 
-const inputNode = document.querySelector('.js-search');
-console.log(inputNode);
 export class InputHistory {
-  constructor(cityName, parrentNode, inputNode) {
-    this.cityName = cityName;
+  constructor(parrentNode) {
+    this.cityName;
     this.parrentNode = parrentNode;
     this.input = '';
     this.cityArr = [];
     this.inputNode = document.querySelector('input');
     this.starter();
-    console.dir (this.inputNode);
   }
 
   starter() {
-    console.log(this.readHistory());
     if (this.readHistory() === undefined) {
       return;
     } else {
       this.cityArr = this.readHistory().concat(this.cityArr);
-      this.createHistoryList();     
+      this.createHistoryList();
     }
   }
-  dataTransfer(flag) {}
 
   addCity(city) {
     this.cityArr.unshift(city);
     this.cityArr.length = 3;
-    console.log(this.cityArr);
     localStorage.setItem('history', JSON.stringify(this.cityArr));
   }
   readHistory() {
@@ -75,19 +69,20 @@ export class InputHistory {
   }
   createHistoryList() {
     const controleNode = document.querySelector('.city_list');
-    if (controleNode !== null) {     
+    if (controleNode !== null) {
       controleNode.remove();
     }
     const markup = historyListTemplate({ name: this.cityArr });
     this.parrentNode.insertAdjacentHTML('beforeend', markup);
   }
-  clickControler (text){
-    this.inputNode.value = text;
-    const controleNode = document.querySelector('.city_list');
-    if (controleNode !== null) {    
-    
+  clickControler(text) {
+    const name = this.cityArr.find(city => city === text);
+    if (name !== undefined) {
+      // this.inputNode.value = name;
+      this.inputNode.value = '';
+      return name;
+    } else {
+      return this.cityArr[0];
     }
   }
 }
-
-

@@ -2,7 +2,7 @@
 import sectionWeatherTemplate from '../templates/section-weather.hbs';
 import { renderTodayWeatherContainer } from './weatherSectionController';
 import { SetLiveTime } from './weatherToday.js';
-import {InputHistory} from './weatherToday.js';
+import { InputHistory } from './weatherToday.js';
 
 import { fetchWeatherByCity } from './services/fetchWeather.js';
 import { fetchImage } from './services/fetchCities.js';
@@ -18,20 +18,19 @@ const inputDiv = document.querySelector('.js-search');
 
 const mainWeatherBlock = document.querySelector('.box_weather');
 const weatherSectionContainer = document.querySelector('.box_today');
-const historyList = new InputHistory(1,inputDiv,1);
+const historyList = new InputHistory(inputDiv);
 
 inputDiv.addEventListener(
   'input',
   debounce(event => {
     const searchQuery = event.target.value;
-
     fetchAndRenderCityByQuery(searchQuery);
   }, 1000),
 );
 
-inputDiv.addEventListener('click',({target})=> {
-  historyList.clickControler(target.innerText);
-  console.dir(target);
+inputDiv.addEventListener('click', ({ target }) => {
+  if (target.nodeName !== 'LI') return;
+  fetchAndRenderCityByQuery(historyList.clickControler(target.innerText));
 });
 
 export function fetchAndRenderCityByQuery(searchQuery) {
@@ -48,9 +47,9 @@ export function fetchAndRenderCityByQuery(searchQuery) {
         fetchAndRenderCityImage(searchQuery);
         pnotifyOk();
         SetLiveTime();
-        console.log(data);        
+        console.log(data);
         historyList.addCity(data.name);
-        historyList.createHistoryList();        
+        historyList.createHistoryList();
       }
     })
     .catch(error => pnotifyErr());
