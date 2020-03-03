@@ -53,10 +53,11 @@ function onFiveDaysButtonClick() {
 export function renderTodayWeatherContainer(weather) {
   const todayData = weatherToday.createTodayData(
     weather.sys.sunrise,
-    weather.sys.sunset,weather.timezone
+    weather.sys.sunset,
+    weather.timezone,
   );
   const markup = sectionWeatherTodayTemplate(todayData);
-  weatherSectionContainer.insertAdjacentHTML('beforeend', markup);  
+  weatherSectionContainer.insertAdjacentHTML('beforeend', markup);
 }
 
 function renderFiveDaysBlock(cityName) {
@@ -79,17 +80,25 @@ function getFiveDaysTemplateData(fiveDaysResponse) {
 
   //============================
   console.log(fiveDaysResponse);
-const date = moment.utc().format();
-console.log(date);
- const dayArr =[];
- const dateArr = [];
- for (let i = 0; i < 5; i++) {
-  dayArr.push(moment(date).add(i, 'days').format('dddd'));
-  dateArr.push(moment(date).add(i, 'days').format('Do'));
- }
- console.log(dayArr);
- console.log(dateArr);
-//===============================
+  const date = moment.utc().format();
+  console.log(date);
+  const dayArr = [];
+  const dateArr = [];
+  for (let i = 0; i < 5; i++) {
+    dayArr.push(
+      moment(date)
+        .add(i, 'days')
+        .format('dddd'),
+    );
+    dateArr.push(
+      moment(date)
+        .add(i, 'days')
+        .format('Do'),
+    );
+  }
+  console.log(dayArr);
+  console.log(dateArr);
+  //===============================
   for (let i = 0; i < 5; i++) {
     let startDay = moment()
       .add(i, 'days')

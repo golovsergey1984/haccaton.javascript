@@ -1,3 +1,4 @@
+{{#if weather}}
 {{#each weather}}
 <img src="https://openweathermap.org/img/wn/{{this.icon}}@2x.png" alt="" class="box_weather-icon">
 {{/each}}
@@ -5,11 +6,14 @@
 <div class="box_weather-values">
     <span id="temp-current" data-value="degrees-current">{{main.temp}}</span>
 
-    <div class="field"> <span id="temp-min" class="temp-min" data-value="degrees-min"> {{main.temp_min}}
-        </span>
-    </div>
 
+    <div class="field"> <span id="temp-min" class="temp-min" data-value="degrees-min"> {{main.temp_min}}</span>
+
+    </div>
     <div class="field"> <span id="temp-max" class="temp-max" data-value="degrees-max"> {{main.temp_max}}</span>
 
     </div>
 </div>
+{{else}}
+
+{{/if}}
