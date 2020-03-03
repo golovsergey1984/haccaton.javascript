@@ -222,6 +222,18 @@ button:hover {
   color: white;
 }
 
+.city_list {
+  max-width: 400px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  color: white;
+  list-style-type: none;
+  padding: 20px 0 0 0;
+  margin: auto auto;
+}
+
 /* ICONS */
 
 img.box_weather-icon {
